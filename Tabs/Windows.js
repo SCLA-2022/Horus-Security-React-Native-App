@@ -17,9 +17,11 @@ export default function Windows() {
             renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
             />
             <Text style={styles.AllWindows}>All Windows</Text>
-            <TouchableOpacity style={styles.buttonContainerOnOff} >
-                        <Text  style={styles.buttonText}>Up/Down</Text>
-                    </TouchableOpacity>
+            <View style={styles.buttonContainerOnOff}>
+                <TouchableOpacity  >
+                            <Text  style={styles.buttonText}>Up/Down</Text>
+                </TouchableOpacity>
+            </View>
             </View>
     )
 }
@@ -42,8 +44,11 @@ const styles = StyleSheet.create({
     },
 
     buttonContainerOnOff: {
-        flex: 0,
+        flex: 800,
         alignItems: 'center',
         justifyContent: 'center',
+    },
+
+    FlatList: {
     }
   });
