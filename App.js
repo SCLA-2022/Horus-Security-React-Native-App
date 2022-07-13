@@ -6,6 +6,7 @@ import Windows from "./Tabs/Windows"
 import Scheduling from "./Tabs/Scheduling";
 import AddDevice from "./Tabs/AddDevice";
 import { StyleSheet, Text, View } from "react-native";
+import Test from "./Tabs/Test";
 
 const Tabs = createBottomTabNavigator();
 
@@ -16,6 +17,7 @@ export default function App() {
         <Tabs.Screen name="Windows" component={Windows} />
         <Tabs.Screen name="Scheduling" component={Scheduling} />
         <Tabs.Screen name="Add a new Device" component={AddDevice} />
+        <Tabs.Screen name="Test" component={Test}/>
       </Tabs.Navigator>
     </NavigationContainer>
   );
