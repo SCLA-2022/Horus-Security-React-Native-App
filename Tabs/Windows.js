@@ -10,15 +10,19 @@ import {
 import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
 import React, { useState } from "react";
+import Room1 from "./SidePages/Room1";
+import Room2 from "./SidePages/Room2";
+import Room3 from "./SidePages/Room3";
 
-const windowObject = {
-  id: "Window1",
-  nickname: "LivingRoomWindow",
+// Previous Window Object List
+// const windowObject = {
+//   id: "Window1",
+//   nickname: "LivingRoomWindow",
 
-  isReinforced: false,
-};
+//   isReinforced: false,
+// };
 
-export default function Windows() {
+export default function Windows({navigation}) {
   const [isEnabled, setIsEnabled] = useState(false);
   const [activeSwitch, setActiveSwitch] = useState(null);
 
@@ -30,7 +34,7 @@ export default function Windows() {
 
   const toggleAll = (activeSwitch) => {
     setIsEnabled(
-      setActiveSwitch(activeSwitch === onValueChange ? null : toggleSwitch)
+      setActiveSwitch(activeSwitch === Switch ? null : activeSwitch)
     );
   };
 
@@ -44,16 +48,18 @@ export default function Windows() {
   const switch3 = () => {
     toggleSwitch(3);
   };
-  const switch4 = () => {
-    toggleSwitch(4);
-  };
-  const switch5 = () => {
-    toggleSwitch(5);
-  };
+
 
   return (
     <>
       <View>
+        <Text>Your Rooms</Text>
+      </View>
+
+      <View>
+        <TouchableOpacity onPress={() => navigation.navigator("Room1")}>
+          <Text>Room 1</Text>
+        </TouchableOpacity>
         <Switch
           trackColor={{ false: "#767577", true: "#81b0ff" }}
           thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
@@ -64,6 +70,9 @@ export default function Windows() {
       </View>
 
       <View>
+        <TouchableOpacity onPress={room2}>
+          <Text>Room 2</Text>
+        </TouchableOpacity>
         <Switch
           trackColor={{ false: "#767577", true: "#81b0ff" }}
           thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
@@ -74,6 +83,9 @@ export default function Windows() {
       </View>
 
       <View>
+        <TouchableOpacity onPress={room3}>
+          <Text>Room 3</Text>
+        </TouchableOpacity>
         <Switch
           trackColor={{ false: "#767577", true: "#81b0ff" }}
           thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
@@ -84,43 +96,9 @@ export default function Windows() {
       </View>
 
       <View>
-        <Switch
-          trackColor={{ false: "#767577", true: "#81b0ff" }}
-          thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
-          ios_backgroundColor="#3e3e3e"
-          onValueChange={switch4}
-          value={activeSwitch === 4}
-        />
-      </View>
-
-      <View>
-        <Switch
-          trackColor={{ false: "#767577", true: "#81b0ff" }}
-          thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
-          ios_backgroundColor="#3e3e3e"
-          onValueChange={switch5}
-          value={activeSwitch === 5}
-        />
-      </View>
-
-      <View>
-        <Text>Windows/Devices</Text>
-        <FlatList
-          data={[
-            { key: "Window 1" },
-            { key: "Window 2" },
-            { key: "Window 3" },
-            { key: "Window 4" },
-            { key: "Window 5" },
-          ]}
-          renderItem={({ item }) => <Text style={styles.item}>{item.key}</Text>}
-        />
-        <Text>All Windows</Text>
-        <View>
-          <TouchableOpacity>
-            <Text>Up/Down</Text>
-          </TouchableOpacity>
-        </View>
+        <TouchableOpacity>
+          <Text>Up/Down</Text>
+        </TouchableOpacity>
       </View>
     </>
   );
@@ -157,3 +135,20 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
+
+//Old Flatlist (don't need it)
+{
+  /* <View>
+        <Text>Windows/Devices</Text>
+        <FlatList
+          data={[
+            { key: "Window 1" },
+            { key: "Window 2" },
+            { key: "Window 3" },
+            { key: "Window 4" },
+            { key: "Window 5" },
+          ]}
+          renderItem={({ item }) => <Text style={styles.item}>{item.key}</Text>}
+        />
+        <Text>All Windows</Text> */
+}
