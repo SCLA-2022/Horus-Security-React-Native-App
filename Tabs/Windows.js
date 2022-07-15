@@ -6,13 +6,14 @@ import {
   TouchableOpacity,
   Switch,
   SwitchComponent,
+  fontFamily,
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
 import React, { useState } from "react";
-import Room1 from "./SidePages/Room1";
-import Room2 from "./SidePages/Room2";
-import Room3 from "./SidePages/Room3";
+import RoomOne from "./SidePages/RoomOne";
+import RoomTwo from "./SidePages/RoomTwo";
+import RoomThree from "./SidePages/RoomThree";
 
 // Previous Window Object List
 // const windowObject = {
@@ -49,19 +50,29 @@ export default function Windows({navigation}) {
     toggleSwitch(3);
   };
 
-
+//style={styles.} 
+//for the styles
   return (
+    <View style={styles.Body}>
     <>
-      <View>
-        <Text>Your Rooms</Text>
+        {/* Switches and Rooms are here */}
+
+      <View style={styles.addDeleteRoom}>
+        <TouchableOpacity>
+            <Text style={styles.addRoomText}>Add Room</Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+            <Text style={styles.deleteRoomText}>Delete Room</Text>
+        </TouchableOpacity>
       </View>
 
-      <View>
-        <TouchableOpacity onPress={() => navigation.navigator("Room1")}>
-          <Text>Room 1</Text>
+      <View style={styles.roomOneContainer}>
+        <TouchableOpacity onPress={() => navigation.navigate("RoomOne")}>
+          <Text style={styles.roomOneText}>Room 1</Text>
         </TouchableOpacity>
         <Switch
-          trackColor={{ false: "#767577", true: "#81b0ff" }}
+          left={240}
+          trackColor={{ false: "#767577", true: "#65E096" }}
           thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
           ios_backgroundColor="#3e3e3e"
           onValueChange={switch1}
@@ -69,12 +80,13 @@ export default function Windows({navigation}) {
         />
       </View>
 
-      <View>
-        <TouchableOpacity onPress={room2}>
-          <Text>Room 2</Text>
+      <View style={styles.roomTwoContainer}>
+        <TouchableOpacity onPress={() => navigation.navigate("RoomTwo")}>
+          <Text style={styles.roomTwoText}>Room 2</Text>
         </TouchableOpacity>
         <Switch
-          trackColor={{ false: "#767577", true: "#81b0ff" }}
+          left={240}
+          trackColor={{ false: "#767577", true: "#65E096" }}
           thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
           ios_backgroundColor="#3e3e3e"
           onValueChange={switch2}
@@ -82,12 +94,13 @@ export default function Windows({navigation}) {
         />
       </View>
 
-      <View>
-        <TouchableOpacity onPress={room3}>
-          <Text>Room 3</Text>
+      <View style={styles.roomThreeContainer}>
+        <TouchableOpacity onPress={() => navigation.navigate("RoomThree")}>
+          <Text style={styles.roomThreeText}>Room 3</Text>
         </TouchableOpacity>
         <Switch
-          trackColor={{ false: "#767577", true: "#81b0ff" }}
+          left={240}
+          trackColor={{ false: "#767577", true: "#65E096" }}
           thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
           ios_backgroundColor="#3e3e3e"
           onValueChange={switch3}
@@ -95,60 +108,117 @@ export default function Windows({navigation}) {
         />
       </View>
 
-      <View>
-        <TouchableOpacity>
-          <Text>Up/Down</Text>
+        {/* Buttons are here */}
+
+      <View style={styles.openShield}>
+        <Text style={styles.openText}>Open all Shields</Text>
+        <TouchableOpacity style={styles.openShieldButton}>
+        <View style={styles.greenButton}>
+        </View>
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.closeShield}>
+        <Text style={styles.closeText}>Close all Shields</Text>
+        <TouchableOpacity style={styles.closeShieldButton}>
+        <View style={styles.redButton}>
+        </View>
         </TouchableOpacity>
       </View>
     </>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  WindowContainer: {
-    flex: 1,
-    fontSize: 20,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
-  WindowFlatList: {
-    flex: 1,
-  },
-
-  AllWindows: {
-    flex: 100,
-  },
-
-  buttonContainerOnOff: {
-    flex: 800,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
-  FlatList: {},
-
-  container: {
-    flex: 0,
-    alignItems: "center",
-    justifyContent: "center",
-  },
+    addDeleteRoom: {
+        flexDirection: "row",
+        padding: 10
+    },
+    addRoomText: {
+        fontFamily: "Times New Roman",
+        textAlign: "left",
+        padding: 10,
+        fontSize: 15,
+    },
+    deleteRoomText: {
+        fontFamily: "Times New Roman",
+        left: 185,
+        textAlign: "right",
+        padding: 10,
+        fontSize: 15,
+    },
+    Windows: {
+        backgroundColor: "white"
+    },
+    Body: {
+        backgroundColor: "white"
+    },
+    yourRoom: {
+        backgroundColor: "white",
+        fontSize: 30,
+        textAlign: "center",
+        padding: 20
+    },
+    roomOneContainer: {
+        backgroundColor: "white",
+        flexDirection: "row",
+    },
+    roomOneText: {
+        backgroundColor: "white",
+        fontSize: 21,
+        padding: 10,
+    },
+    roomTwoContainer: {
+        backgroundColor: "white",
+        flexDirection: "row"
+    },
+    roomTwoText: {
+        backgroundColor: "white",
+        fontSize: 21,
+        padding: 10,
+    },
+    roomThreeContainer: {
+        backgroundColor: "white",
+        flexDirection: "row"
+    },
+    roomThreeText: {
+        backgroundColor: "white",
+        fontSize: 21,
+        padding: 10,
+    },
+    greenButton: {
+        backgroundColor: '#8EE18E',
+        width: 283,
+        height: 87,
+    },
+    openText: {
+        backgroundColor: "white",
+        fontSize: 20,
+        fontFamily: "Times New Roman",
+        padding: 10
+    },
+    redButton: {
+        backgroundColor: "#F37C7C",
+        width: 283,
+        height: 87,
+    },
+    closeText: {
+        backgroundColor: "white",
+        fontSize: 20,
+        fontFamily: "Times New Roman",
+        padding: 10
+    },
+    openShield: {
+        backgroundColor: "white",
+        top: 195,
+        alignItems: "center",
+        justifyContent: "center"
+    },
+    closeShield: {
+        backgroundColor: "white",
+        top: 210,
+        alignItems: "center",
+        justifyContent: "center",
+    },
 });
-
-//Old Flatlist (don't need it)
-{
-  /* <View>
-        <Text>Windows/Devices</Text>
-        <FlatList
-          data={[
-            { key: "Window 1" },
-            { key: "Window 2" },
-            { key: "Window 3" },
-            { key: "Window 4" },
-            { key: "Window 5" },
-          ]}
-          renderItem={({ item }) => <Text style={styles.item}>{item.key}</Text>}
-        />
-        <Text>All Windows</Text> */
-}

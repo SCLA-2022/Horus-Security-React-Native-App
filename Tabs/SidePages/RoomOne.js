@@ -11,8 +11,13 @@ import {
   import { NavigationContainer } from "@react-navigation/native";
   import React, { useState } from "react";
 
-export default function Room1() {
+export default function RoomOne({ navigation }) {
 return (
-    <Text>Hello</Text>
+  <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <Text>Room 1!</Text>
+    <TouchableOpacity onPress={() => navigation.goBack()}>
+      <Text> Go back to the previous screen! </Text>
+    </TouchableOpacity>
+  </View>
 )
 }

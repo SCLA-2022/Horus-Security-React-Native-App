@@ -7,21 +7,32 @@ import Scheduling from "./Tabs/Scheduling";
 import AddDevice from "./Tabs/AddDevice";
 import { StyleSheet, Text, View } from "react-native";
 import Test from "./Tabs/Test";
-import Stacks from "./Tabs/Stacks/Stacks";
+import Tabs from "./Tabs/Navigation/Tabs";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import RoomOne from "./Tabs/SidePages/RoomOne";
+import RoomTwo from "./Tabs/SidePages/RoomTwo";
+import RoomThree from "./Tabs/SidePages/RoomThree";
 
-const Tabs = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
+
+const Stacks = () => {
+  return(
+    <Stack.Navigator screenOptions={{
+      headerShown: false
+    }}>
+      <Stack.Screen name = "home"  component={ Tabs }/>
+      <Stack.Screen name = "RoomOne" component = { RoomOne }/>
+      <Stack.Screen name = "RoomTwo" component = {RoomTwo}/>
+      <Stack.Screen name = "RoomThree" component = {RoomThree}/>
+    </Stack.Navigator>
+  )
+}
+
 
 export default function App() {
   return (
     <NavigationContainer>
-
-      <Tabs.Navigator>
-        <Tabs.Screen name="Windows" component={Windows} />
-        <Tabs.Screen name="Scheduling" component={Scheduling} />
-        <Tabs.Screen name="Add a new Device" component={AddDevice} />
-        <Tabs.Screen name="Test" component={Test}/>
-        <Tabs.Screen name = "Stacks" component={ Stacks} />
-      </Tabs.Navigator>
+      <Stacks/>
     </NavigationContainer>
   );
 }
