@@ -12,6 +12,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import RoomOne from "./Tabs/SidePages/RoomOne";
 import RoomTwo from "./Tabs/SidePages/RoomTwo";
 import RoomThree from "./Tabs/SidePages/RoomThree";
+import RepeatEachWeek from "./Tabs/SidePages/RepeatEachWeek";
 
 const Stack = createNativeStackNavigator();
 
@@ -24,6 +25,7 @@ const Stacks = () => {
       <Stack.Screen name = "RoomOne" component = { RoomOne }/>
       <Stack.Screen name = "RoomTwo" component = {RoomTwo}/>
       <Stack.Screen name = "RoomThree" component = {RoomThree}/>
+      <Stack.Screen name = "RepeatEachWeek" component = {RepeatEachWeek}/>
     </Stack.Navigator>
   )
 }

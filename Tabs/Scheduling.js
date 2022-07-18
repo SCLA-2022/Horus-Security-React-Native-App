@@ -1,27 +1,26 @@
-import { StyleSheet, Text, View, FlatList, TouchableOpacity, Button, Platform } from "react-native";
+import { StyleSheet, Text, View, FlatList, TouchableOpacity, Button, Platform, Switch } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
 import DropDownPicker from 'react-native-dropdown-picker';
 import DateTimePicker from '@react-native-community/datetimepicker'
 import React, { useState } from 'react'
+import RepeatEachWeek from "./SidePages/RepeatEachWeek";
 
 
-export default function Scheduling() {
+export default function Scheduling({navigation}) {
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(null);
     const [items, setItems] = useState([
-    {label: 'Window 1', value: 'window1'},
-    {label: 'Window 2', value: 'window2'},
-    {label: 'Window 3', value: 'window3'},
-    {label: 'Window 4', value: 'window4'},
-    {label: 'Window 5', value: 'window5'},
-    {label: 'All Windows', value: 'allwindows'}
+    {label: 'All Rooms', value: 'window1'},
+    {label: 'Room 1', value: 'window2'},
+    {label: 'Room 2', value: 'window3'},
+    {label: 'Room 3', value: 'window4'}
   ]);
 
   const [date, setDate] = useState(new Date());
   const [mode, setMode] = useState('Date');
   const [show, setShow] = useState(false);
-  const [text, setText] = useState('Empty');
+  const [text, setText] = useState('');
 
   const onChange = (event, selectedDate) => {
       const currentDate = selectedDate || date;
@@ -41,6 +40,26 @@ export default function Scheduling() {
       setMode(currentMode)
   }
 
+  const [isEnabled, setIsEnabled] = useState(false);
+  const [activeSwitch, setActiveSwitch] = useState(null);
+
+  const toggleSwitch = (num) => {
+    setIsEnabled(setActiveSwitch(num === activeSwitch ? null : num));
+  };
+
+  const toggleAll = (activeSwitch) => {
+    setIsEnabled(
+      setActiveSwitch(activeSwitch === Switch ? null : activeSwitch)
+    );
+  };
+
+  const switch1 = () => {
+    toggleSwitch(1);
+  };
+  const switch2 = () => {
+    toggleSwitch(2);
+  };
+
     return (
         <>
         <DropDownPicker
@@ -52,13 +71,50 @@ export default function Scheduling() {
       setItems={setItems}
     />
 
-        <View style={styles.container}>
-        <Text style={styles.Stuff}>{text}</Text>
-        <View >
-            <Button title='DatePicker' onPress={() => showMode('date')}/>
+
+        <View style={styles.Body}>
+        <View style={styles.closeShieldContainer}>
+        <View style={styles.closedShieldView}>
+        <Text style={styles.closedShieldText}>Closed Shields:</Text>
         </View>
-        <View>
-            <Button title='TimePicker' onPress={() => showMode('time')}/>
+        <Text style={styles.timeDateText}>{text}</Text>
+        <Button title='Time' onPress={() => showMode('time')}/>
+        {/* <Button title='Date' onPress={() => showMode('date')}/> */}
+        <Switch
+          left={240}
+          trackColor={{ false: "#767577", true: "#65E096" }}
+          thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
+          ios_backgroundColor="#3e3e3e"
+          onValueChange={switch1}
+          value={activeSwitch === 1}
+        />
+        </View>
+        <View style={styles.repeatClosed}>
+        <TouchableOpacity onPress={() => navigation.navigate("RepeatEachWeek")}>
+            <Text>Repeat Every:</Text>
+        </TouchableOpacity>
+        </View>
+
+        <View style={styles.openShieldContainer}>
+        <View style={styles.openShieldView}>
+        <Text style={styles.openShieldText}>Open Shields:</Text>
+        </View>
+        <Text style={styles.timeDateText}>{text}</Text>
+            <Button title='Time' onPress={() => showMode('time')}/>
+            {/* <Button title='Date' onPress={() => showMode('date')}/> */}
+            <Switch
+          left={240}
+          trackColor={{ false: "#767577", true: "#65E096" }}
+          thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
+          ios_backgroundColor="#3e3e3e"
+          onValueChange={switch2}
+          value={activeSwitch === 2}
+        />
+        </View>
+        <View style={styles.repeatOpen}>
+        <TouchableOpacity onPress={() => navigation.navigate("RepeatEachWeek")}>
+            <Text>Repeat Every:</Text>
+        </TouchableOpacity>
         </View>
 
         
@@ -79,51 +135,13 @@ export default function Scheduling() {
     </>
     ) 
 
-
-
-
-
-  
-
-    
-
-    /**return (
-        <View style={styles.container}>
-        <Text style={styles.Stuff}>{text}</Text>
-        <View style={styles.PickButton}>
-            <Button title='DatePicker' onPress={() => showMode('date')}/>
-        </View>
-        <View style={styles.PickButton}>
-            <Button title='TimePicker' onPress={() => showMode('time')}/>
-        </View>
-
-        
-            <DateTimePicker
-            testID='dateTimePicker'
-            value={date}
-            mode={mode}
-            is24Hour={true}
-            display='default'
-            onChange={onChange}
-            />
-
-        <StatusBar style="auto" />
-        </View>
-    )
-/* */
-
-
 }
 const styles = StyleSheet.create({
-    ScheduleContainer: {
-      flex: 1,
-      fontSize: 20,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
+    closeShieldContainer: {
+        flexDirection: 'row'
     },
-
-    WindowFlatList: {
-        flex: 1,
+    openShieldContainer: {
+        flexDirection: 'row'
     }
+    
 })
