@@ -73,6 +73,7 @@ export default function Scheduling({navigation}) {
 
 
         <View style={styles.Body}>
+        <View style={styles.wholecontainer}>
         <View style={styles.closeShieldContainer}>
         <View style={styles.closedShieldView}>
         <Text style={styles.closedShieldText}>Closed Shields:</Text>
@@ -99,7 +100,8 @@ export default function Scheduling({navigation}) {
             </View>
         </TouchableOpacity>
         </View>
-
+        </View>
+        <View style={styles.othercontainer}>
         <View style={styles.openShieldContainer}>
         <View style={styles.openShieldView}>
         <Text style={styles.openShieldText}>Open Shields:</Text>
@@ -126,8 +128,9 @@ export default function Scheduling({navigation}) {
             </View>
         </TouchableOpacity>
         </View>
+        </View>
 
-        
+        <View style={styles.timeshow}>
             {show && (
             <DateTimePicker
             testID='dateTimePicker'
@@ -137,6 +140,7 @@ export default function Scheduling({navigation}) {
             display='default'
             onChange={onChange}
             />)}
+        </View>
 
         
 
@@ -176,5 +180,18 @@ const styles = StyleSheet.create({
     },
     Body: {
         backgroundColor: 'white'
+    },
+    wholecontainer: {
+        top: 50
+    },
+    othercontainer: {
+        top: 200
+    },
+    timeshow: {
+        top: -165,
+        alignContent: 'center',
+        justifyContent: 'center',
+        left: -140
     }
+
 })
