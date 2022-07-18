@@ -78,10 +78,12 @@ export default function Scheduling({navigation}) {
         <Text style={styles.closedShieldText}>Closed Shields:</Text>
         </View>
         <Text style={styles.timeDateText}>{text}</Text>
+        <View style={styles.Time}>
         <Button title='Time' onPress={() => showMode('time')}/>
+        </View>
         {/* <Button title='Date' onPress={() => showMode('date')}/> */}
         <Switch
-          left={240}
+          left={10}
           trackColor={{ false: "#767577", true: "#65E096" }}
           thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
           ios_backgroundColor="#3e3e3e"
@@ -89,9 +91,12 @@ export default function Scheduling({navigation}) {
           value={activeSwitch === 1}
         />
         </View>
-        <View style={styles.repeatClosed}>
+        <View style={styles.repeat}>
         <TouchableOpacity onPress={() => navigation.navigate("RepeatEachWeek")}>
-            <Text>Repeat Every:</Text>
+            <Text style={styles.repeatEveryText}>Repeat Every:</Text>
+            <View style={styles.arrowContainer}>
+                <Text> → </Text>
+            </View>
         </TouchableOpacity>
         </View>
 
@@ -100,10 +105,12 @@ export default function Scheduling({navigation}) {
         <Text style={styles.openShieldText}>Open Shields:</Text>
         </View>
         <Text style={styles.timeDateText}>{text}</Text>
+            <View style={styles.Time}>
             <Button title='Time' onPress={() => showMode('time')}/>
+            </View>
             {/* <Button title='Date' onPress={() => showMode('date')}/> */}
             <Switch
-          left={240}
+          left={20}
           trackColor={{ false: "#767577", true: "#65E096" }}
           thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
           ios_backgroundColor="#3e3e3e"
@@ -111,9 +118,12 @@ export default function Scheduling({navigation}) {
           value={activeSwitch === 2}
         />
         </View>
-        <View style={styles.repeatOpen}>
+        <View style={styles.repeat}>
         <TouchableOpacity onPress={() => navigation.navigate("RepeatEachWeek")}>
-            <Text>Repeat Every:</Text>
+            <Text style={styles.repeatEveryText}>Repeat Every:</Text>
+            <View style={styles.arrowContainer}>
+                <Text> → </Text>
+            </View>
         </TouchableOpacity>
         </View>
 
@@ -142,6 +152,29 @@ const styles = StyleSheet.create({
     },
     openShieldContainer: {
         flexDirection: 'row'
+    },
+    timeDateText: {
+        borderWidth: 1,
+        borderColor: 'black',
+    },
+    repeat: {
+        backgroundColor: '#D9D9D9',
+        width: 426,
+        height: 48,
+        flexDirection: "row"
+    },
+    arrowContainer: {
+        textAlign: 'center',
+        top: -10,
+        left: 100,
+        backgroundColor: 'white',
+        height: 34,
+        width: 74,
+    },
+    repeatEveryText: {
+        top: 13
+    },
+    Body: {
+        backgroundColor: 'white'
     }
-    
 })

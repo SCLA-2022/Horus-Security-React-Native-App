@@ -10,16 +10,69 @@ import {
   import { StatusBar } from "expo-status-bar";
   import { NavigationContainer } from "@react-navigation/native";
   import React, { useState } from "react";
-  import CheckBox from '@react-native-community/checkbox';
+  import Checkbox from "expo-checkbox";
 
 export default function RepeatEachWeek({ navigation }) {
-  const [toggleCheckBox, setToggleCheckBox] = useState(false)
-  
+  const [isChecked, setChecked] = useState(false);
+
 return(
-  <CheckBox
-    disabled={false}
-    value={toggleCheckBox}
-    onValueChange={(newValue) => setToggleCheckBox(newValue)}
-  />
+  <>
+    <View>
+        <Checkbox
+          value={isChecked}
+          onValueChange={setChecked}
+          color={isChecked ? '#65E096' : undefined}
+        />
+        <Text>Monday</Text>
+    </View>
+    <View>
+    <Checkbox
+      value={isChecked}
+      onValueChange={setChecked}
+      color={isChecked ? '#65E096' : undefined}
+    />
+    <Text>Tuesday</Text>
+    </View>
+    <View>
+        <Checkbox
+          value={isChecked}
+          onValueChange={setChecked}
+          color={isChecked ? '#65E096' : undefined}
+        />
+        <Text>Wednesday</Text>
+    </View>
+    <View>
+        <Checkbox
+          value={isChecked}
+          onValueChange={setChecked}
+          color={isChecked ? '#65E096' : undefined}
+        />
+        <Text>Thursday</Text>
+    </View>
+    <View>
+        <Checkbox
+          value={isChecked}
+          onValueChange={setChecked}
+          color={isChecked ? '#65E096' : undefined}
+        />
+        <Text>Friday</Text>
+    </View>
+    <View>
+        <Checkbox
+          value={isChecked}
+          onValueChange={setChecked}
+          color={isChecked ? '#65E096' : undefined}
+        />
+        <Text>Saturday</Text>
+    </View>
+    <View>
+        <Checkbox
+          value={isChecked}
+          onValueChange={setChecked}
+          color={isChecked ? '#65E096' : undefined}
+        />
+        <Text>Sunday</Text>
+    </View>
+  </>
 )
 }
