@@ -12,13 +12,18 @@ const Tab = createBottomTabNavigator();
 const Tabs = () => {
     return (
 
-            <Tab.Navigator>
-                <Tab.Screen name="Your Rooms" component={Windows} />
-                <Tab.Screen name="Scheduling" component={Scheduling} />
-                <Tab.Screen name="Add a new Device" component={AddDevice} />
+            <Tab.Navigator style={styles.headerFonts}>
+                <Tab.Screen name="Your Rooms" component={Windows} style={styles.roomFont} />
+                <Tab.Screen name="Scheduling" component={Scheduling} style={styles.scheduleFont}/>
+                <Tab.Screen name="Add a new Device" component={AddDevice} style={styles.deviceFont}/>
             </Tab.Navigator>
 
     )
 }
 
+
 export default  Tabs;
+
+const styles = StyleSheet.create({
+    roomFont: 'Times New Roman'
+})

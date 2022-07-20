@@ -13,6 +13,7 @@ import RoomOne from "./Tabs/SidePages/RoomOne";
 import RoomTwo from "./Tabs/SidePages/RoomTwo";
 import RoomThree from "./Tabs/SidePages/RoomThree";
 import RepeatEachWeek from "./Tabs/SidePages/RepeatEachWeek";
+import LoginScreen from "./Tabs/LoginScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -21,7 +22,8 @@ const Stacks = () => {
     <Stack.Navigator screenOptions={{
       headerShown: false
     }}>
-      <Stack.Screen name = "home"  component={ Tabs }/>
+      {/* <Stack.Screen name = "Login" component = { LoginScreen }/> */}
+      <Stack.Screen name = "home"  component = { Tabs }/>
       <Stack.Screen name = "RoomOne" component = { RoomOne }/>
       <Stack.Screen name = "RoomTwo" component = {RoomTwo}/>
       <Stack.Screen name = "RoomThree" component = {RoomThree}/>

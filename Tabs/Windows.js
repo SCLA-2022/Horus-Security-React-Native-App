@@ -55,26 +55,24 @@ export default function Windows({navigation}) {
   return (
     <View style={styles.Body}>
     <>
-        {/* Switches and Rooms are here */}
-
-      <View style={styles.addDeleteRoom}>
+      {/* <View style={styles.addDeleteRoom}>
         <TouchableOpacity>
             <Text style={styles.addRoomText}>Add Room</Text>
         </TouchableOpacity>
         <TouchableOpacity>
             <Text style={styles.deleteRoomText}>Delete Room</Text>
         </TouchableOpacity>
-      </View>
+      </View> */}
 
       <View style={styles.roomOneContainer}>
         <TouchableOpacity onPress={() => navigation.navigate("RoomOne")}>
           <Text style={styles.roomOneText}>Room 1</Text>
         </TouchableOpacity>
         <Switch
-          left={240}
-          trackColor={{ false: "#767577", true: "#65E096" }}
+          left={220}
+          trackColor={{ false: "#767577", true: "#361A36" }}
           thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
-          ios_backgroundColor="#3e3e3e"
+          ios_backgroundColor="#E3E3E3"
           onValueChange={switch1}
           value={activeSwitch === 1}
         />
@@ -85,10 +83,10 @@ export default function Windows({navigation}) {
           <Text style={styles.roomTwoText}>Room 2</Text>
         </TouchableOpacity>
         <Switch
-          left={240}
-          trackColor={{ false: "#767577", true: "#65E096" }}
+          left={220}
+          trackColor={{ false: "#767577", true: "#361A36" }}
           thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
-          ios_backgroundColor="#3e3e3e"
+          ios_backgroundColor="#E3E3E3"
           onValueChange={switch2}
           value={activeSwitch === 2}
         />
@@ -99,10 +97,10 @@ export default function Windows({navigation}) {
           <Text style={styles.roomThreeText}>Room 3</Text>
         </TouchableOpacity>
         <Switch
-          left={240}
-          trackColor={{ false: "#767577", true: "#65E096" }}
+          left={220}
+          trackColor={{ false: "#767577", true: "#361A36" }}
           thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
-          ios_backgroundColor="#3e3e3e"
+          ios_backgroundColor="#E3E3E3"
           onValueChange={switch3}
           value={activeSwitch === 3}
         />
@@ -111,17 +109,18 @@ export default function Windows({navigation}) {
         {/* Buttons are here */}
 
       <View style={styles.openShield}>
-        <Text style={styles.openText}>Open all Shields</Text>
         <TouchableOpacity style={styles.openShieldButton}>
         <View style={styles.greenButton}>
+          <Text style={styles.openText}>Open all Shields</Text>
         </View>
         </TouchableOpacity>
       </View>
 
       <View style={styles.closeShield}>
-        <Text style={styles.closeText}>Close all Shields</Text>
+        
         <TouchableOpacity style={styles.closeShieldButton}>
         <View style={styles.redButton}>
+          <Text style={styles.closeText}>Close all Shields</Text>
         </View>
         </TouchableOpacity>
       </View>
@@ -152,6 +151,7 @@ const styles = StyleSheet.create({
         backgroundColor: "white"
     },
     Body: {
+        flex: 1,
         backgroundColor: "white"
     },
     yourRoom: {
@@ -188,37 +188,47 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     greenButton: {
-        backgroundColor: '#8EE18E',
-        width: 283,
-        height: 87,
+        top: 40,
+        borderWidth: 3,
+        backgroundColor: 'white',
+        width: 269,
+        height: 67,
+        borderRadius: 100
     },
     openText: {
-        backgroundColor: "white",
         fontSize: 20,
         fontFamily: "Times New Roman",
-        padding: 10
+        padding: 0,
+        top: 20,
+        textAlign: 'center',
+        justifyContent: 'center'
     },
     redButton: {
+        top: 80,
         backgroundColor: "#F37C7C",
-        width: 283,
-        height: 87,
+        width: 269,
+        height: 67,
+        borderRadius: 100,
+        backgroundColor: "#361A36"
     },
     closeText: {
-        backgroundColor: "white",
+        top: 20,
         fontSize: 20,
-        fontFamily: "Times New Roman",
-        padding: 10
+        textAlign: 'center',
+        justifyContent: 'center',
+        color: "white",
+        fontFamily: "Times New Roman"
     },
     openShield: {
-        backgroundColor: "white",
         top: 195,
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
+        borderRadius: 100,
     },
     closeShield: {
-        backgroundColor: "white",
         top: 210,
         alignItems: "center",
         justifyContent: "center",
+        borderRadius: 100
     },
 });
