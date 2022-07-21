@@ -14,6 +14,7 @@ import React, { useState } from "react";
 import RoomOne from "./SidePages/RoomOne";
 import RoomTwo from "./SidePages/RoomTwo";
 import RoomThree from "./SidePages/RoomThree";
+import axios from "axios";
 
 // Previous Window Object List
 // const windowObject = {
@@ -23,9 +24,27 @@ import RoomThree from "./SidePages/RoomThree";
 //   isReinforced: false,
 // };
 
+
 export default function Windows({navigation}) {
   const [isEnabled, setIsEnabled] = useState(false);
   const [activeSwitch, setActiveSwitch] = useState(null);
+
+  const turnOn = () => {
+    console.log("turning on led")
+    axios.get('http://192.168.1.143/led1on').then((res) => {
+      console.log(res)
+    }).catch((err) => {
+      console.log(err)
+    }) 
+  }
+  const turnOff = () => {
+    console.log("turning on led")
+    axios.get('http://192.168.1.143/led1off').then((res) => {
+      console.log(res)
+    }).catch((err) => {
+      console.log(err)
+    })
+  }
 
   //Three Equals is going to check for Type (if number or string, Boolean) and checks if it is the correct value
 
@@ -69,6 +88,7 @@ export default function Windows({navigation}) {
           <Text style={styles.roomOneText}>Room 1</Text>
         </TouchableOpacity>
         <Switch
+          top={10}
           left={220}
           trackColor={{ false: "#767577", true: "#361A36" }}
           thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
@@ -83,6 +103,7 @@ export default function Windows({navigation}) {
           <Text style={styles.roomTwoText}>Room 2</Text>
         </TouchableOpacity>
         <Switch
+          top={10}
           left={220}
           trackColor={{ false: "#767577", true: "#361A36" }}
           thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
@@ -97,6 +118,7 @@ export default function Windows({navigation}) {
           <Text style={styles.roomThreeText}>Room 3</Text>
         </TouchableOpacity>
         <Switch
+          top={10}
           left={220}
           trackColor={{ false: "#767577", true: "#361A36" }}
           thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
@@ -109,7 +131,7 @@ export default function Windows({navigation}) {
         {/* Buttons are here */}
 
       <View style={styles.openShield}>
-        <TouchableOpacity style={styles.openShieldButton}>
+        <TouchableOpacity onPress={() => {turnOn()}}>
         <View style={styles.greenButton}>
           <Text style={styles.openText}>Open all Shields</Text>
         </View>
@@ -118,7 +140,7 @@ export default function Windows({navigation}) {
 
       <View style={styles.closeShield}>
         
-        <TouchableOpacity style={styles.closeShieldButton}>
+        <TouchableOpacity onPress={() => {turnOff()}}>
         <View style={styles.redButton}>
           <Text style={styles.closeText}>Close all Shields</Text>
         </View>
@@ -161,30 +183,45 @@ const styles = StyleSheet.create({
         padding: 20
     },
     roomOneContainer: {
-        backgroundColor: "white",
-        flexDirection: "row",
+      backgroundColor: "white",
+      flexDirection: "row",
+      top: 35,
+      borderWidth: 1,
+      borderTopColor: 'white',
+      borderEndColor: 'white',
+      borderStartColor: 'white',
     },
     roomOneText: {
         backgroundColor: "white",
-        fontSize: 21,
+        fontSize: 25,
         padding: 10,
     },
     roomTwoContainer: {
-        backgroundColor: "white",
-        flexDirection: "row"
+      backgroundColor: "white",
+      flexDirection: "row",
+      top: 35,
+      borderWidth: 1,
+      borderTopColor: 'white',
+      borderEndColor: 'white',
+      borderStartColor: 'white'
     },
     roomTwoText: {
         backgroundColor: "white",
-        fontSize: 21,
+        fontSize: 25,
         padding: 10,
     },
     roomThreeContainer: {
         backgroundColor: "white",
-        flexDirection: "row"
+        flexDirection: "row",
+        top: 35,
+        borderWidth: 1,
+        borderTopColor: 'white',
+        borderEndColor: 'white',
+        borderStartColor: 'white'
     },
     roomThreeText: {
         backgroundColor: "white",
-        fontSize: 21,
+        fontSize: 25,
         padding: 10,
     },
     greenButton: {
