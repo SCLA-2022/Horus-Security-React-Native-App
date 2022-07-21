@@ -15,10 +15,9 @@ import React, { useState } from "react";
 export default function RoomOne({ navigation }) {
   const [modalOpen, setModalOpen] = useState(false);
 
-
   return (
     <>
-      <Modal visible={true} animationType='slide'>
+      <Modal visible={modalOpen} animationType="slide">
         <View style={styles.ModalView}>
           <TouchableOpacity onPress={() => setModalOpen(false)}>
             <Text>Back</Text>
@@ -36,7 +35,7 @@ export default function RoomOne({ navigation }) {
         </View>
 
         <View style={styles.windowContainer}>
-          <TouchableOpacity onPress={() => setModalOpen(true)}>
+          <TouchableOpacity onPress={() => setModalOpen(!modalOpen)}>
             <Text style={styles.windowOne}>Window 1</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => setModalOpen(true)}>
