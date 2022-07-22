@@ -17,13 +17,31 @@ export default function RoomOne({ navigation }) {
 
   return (
     <>
-      <Modal visible={modalOpen} animationType="slide">
+    <View style={styles.modalContainer}>
+      <Modal style={styles.theModal} visible={modalOpen} animationType="slide">
         <View style={styles.ModalView}>
           <TouchableOpacity onPress={() => setModalOpen(false)}>
-            <Text>Back</Text>
+            <Text style={styles.modalText}>Back</Text>
           </TouchableOpacity>
         </View>
+        <View style={styles.container}>
+                <Text style={styles.Bluetooth}> What do you want to do with this window? </Text>
+                <View style={styles.background}>
+                  <TouchableOpacity>
+                    <View style={styles.reassign}>
+                      <Text style={styles.reassignText}>Reassign</Text>
+                    </View>
+                  </TouchableOpacity>
+                  <View style={styles.line}></View>
+                  <TouchableOpacity>
+                    <View style={styles.disconnect}>
+                      <Text style={styles.disconnectText}>Disconnect</Text>
+                    </View>
+                  </TouchableOpacity>
+                </View>
+          </View>
       </Modal>
+    </View>
 
       <View style={styles.body}>
         <View style={styles.backButton}>
@@ -51,6 +69,76 @@ export default function RoomOne({ navigation }) {
 }
 
 const styles = StyleSheet.create({
+  line: {
+    left: 50,
+    borderWidth: 0.6,
+    borderBottomColor: 'transparent',
+  },
+  disconnect: {
+    left: 100,
+    width: 120,
+    height: 65,
+  },
+  disconnectText: {
+    left: -20,
+    top: 16,
+    fontSize: 23,
+    fontFamily: 'Times New Roman'
+  },
+  reassign: {
+    left: 50,
+    width: 120,
+    height: 65
+  },
+  reassignText: {
+    left: -10,
+    top: 16,
+    fontSize: 23,
+    fontFamily: 'Times New Roman'
+  },
+  modalText: {
+
+  },
+  theModal: {
+  },
+  container: {
+  width: 345,
+  height: 189,
+  top: 180,
+  backgroundColor: 'white',
+  left: 21,
+  borderTopEndRadius: 30,
+  borderTopStartRadius: 30,
+  borderWidth: 1,
+  },
+  background: {
+  backgroundColor: 'white',
+  height: 65,
+  top: 130,
+  left: -1,
+  width: 345,
+  borderBottomEndRadius: 30,
+  borderBottomStartRadius: 30,
+  borderWidth: 1,
+  flexDirection: 'row'
+  },
+  Bluetooth: {
+  color: 'black',
+  textAlign: 'center',
+  top: 70,
+  left: 15,
+  fontSize: 25,
+  width: 300,
+  fontFamily: 'Times New Roman'
+  },
+  modalContainer: {
+    opacity: 100
+  },
+  ModalView: {
+    opacity: 100,
+    top: 70,
+    left: 10
+  },
   backButton: {
     top: 60,
     left: 10,
