@@ -13,36 +13,82 @@ import { NavigationContainer } from "@react-navigation/native";
 import React, { useState } from "react";
 
 export default function RoomOne({ navigation }) {
-  const [modalOpen, setModalOpen] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const inputModal = () => (
+    <Modal
+      animationType="slide"
+      transparent={true}
+      visible={modalVisible}
+      onRequestClose={() => {
+        Alert.alert("Modal has been closed.");
+        setModalVisible(!modalVisible);
+      }}
+    >
+      <View style={styles.centeredView}>
+        <View style={styles.modalView}>
+          <Text>What do you want to do with this window?</Text>
+          <TouchableOpacity>
+            <View>
+              <Text>Reassign</Text>
+            </View>
+          </TouchableOpacity>
+          {/* <View style={styles.line}></View> */}
+          <TouchableOpacity onPress={() => setModalVisible(false)}>
+            <View>
+              <Text>Disconnect</Text>
+            </View>
+          </TouchableOpacity>
+
+          {/* <Text style={styles.modalText}>Schedule window 1 close or open</Text>
+          <View>
+            <Text>This is a Modal</Text>
+          </View>
+          <TouchableOpacity style={styles.submitButton}>
+            <Text style={styles.submitText}>Button</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.closeButton}
+            onPress={() => setModalVisible(false)}
+          >
+            <Text style={styles.closeText}>Close</Text>
+          </TouchableOpacity> */}
+        </View>
+      </View>
+    </Modal>
+  );
 
   return (
     <>
-    <View style={styles.modalContainer}>
-      <Modal style={styles.theModal} visible={modalOpen} animationType="slide">
-        <View style={styles.ModalView}>
-          <TouchableOpacity onPress={() => setModalOpen(false)}>
-            <Text style={styles.modalText}>Back</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.container}>
-                <Text style={styles.Bluetooth}> What do you want to do with this window? </Text>
-                <View style={styles.background}>
-                  <TouchableOpacity>
-                    <View style={styles.reassign}>
-                      <Text style={styles.reassignText}>Reassign</Text>
-                    </View>
-                  </TouchableOpacity>
-                  <View style={styles.line}></View>
-                  <TouchableOpacity>
-                    <View style={styles.disconnect}>
-                      <Text style={styles.disconnectText}>Disconnect</Text>
-                    </View>
-                  </TouchableOpacity>
+      {/* <View style={styles.modalContainer}> */}
+      {/* <Modal style={styles.theModal} visible={modalOpen} animationType="fade"> */}
+      {/* <View style={styles.ModalView}>
+            <TouchableOpacity onPress={() => setModalOpen(false)}>
+              <Text style={styles.modalText}>Back</Text>
+            </TouchableOpacity>
+          </View> */}
+      {/* <View style={styles.container}>
+            <Text style={styles.Bluetooth}>
+              {" "}
+              What do you want to do with this window?{" "}
+            </Text>
+            <View style={styles.background}>
+              <TouchableOpacity>
+                <View style={styles.reassign}>
+                  <Text style={styles.reassignText}>Reassign</Text>
                 </View>
+              </TouchableOpacity>
+              <View style={styles.line}></View>
+              <TouchableOpacity>
+                <View style={styles.disconnect}>
+                  <Text style={styles.disconnectText}>Disconnect</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
           </View>
-      </Modal>
-    </View>
-
+        </Modal>
+      </View> */}
+      {inputModal()}
       <View style={styles.body}>
         <View style={styles.backButton}>
           <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -53,7 +99,7 @@ export default function RoomOne({ navigation }) {
         </View>
 
         <View style={styles.windowContainer}>
-          <TouchableOpacity onPress={() => setModalOpen(!modalOpen)}>
+          <TouchableOpacity onPress={() => setModalVisible(!modalVisible)}>
             <Text style={styles.windowOne}>Window 1</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => setModalOpen(true)}>
@@ -72,7 +118,7 @@ const styles = StyleSheet.create({
   line: {
     left: 50,
     borderWidth: 0.6,
-    borderBottomColor: 'transparent',
+    borderBottomColor: "transparent",
   },
   disconnect: {
     left: 100,
@@ -83,61 +129,67 @@ const styles = StyleSheet.create({
     left: -20,
     top: 16,
     fontSize: 23,
-    fontFamily: 'Times New Roman'
+    fontFamily: "Times New Roman",
   },
   reassign: {
     left: 50,
     width: 120,
-    height: 65
+    height: 65,
   },
   reassignText: {
     left: -10,
     top: 16,
     fontSize: 23,
-    fontFamily: 'Times New Roman'
+    fontFamily: "Times New Roman",
   },
-  modalText: {
-
-  },
+  modalText: {},
   theModal: {
+    width: 345,
+    height: 189,
+    top: 180,
+    backgroundColor: "white",
+    left: 21,
+    borderTopEndRadius: 30,
+    borderTopStartRadius: 30,
+    borderWidth: 1,
   },
   container: {
-  width: 345,
-  height: 189,
-  top: 180,
-  backgroundColor: 'white',
-  left: 21,
-  borderTopEndRadius: 30,
-  borderTopStartRadius: 30,
-  borderWidth: 1,
+    width: 345,
+    height: 189,
+    top: 180,
+    backgroundColor: "white",
+    left: 21,
+    borderTopEndRadius: 30,
+    borderTopStartRadius: 30,
+    borderWidth: 1,
   },
   background: {
-  backgroundColor: 'white',
-  height: 65,
-  top: 130,
-  left: -1,
-  width: 345,
-  borderBottomEndRadius: 30,
-  borderBottomStartRadius: 30,
-  borderWidth: 1,
-  flexDirection: 'row'
+    backgroundColor: "white",
+    height: 65,
+    top: 130,
+    left: -1,
+    width: 345,
+    borderBottomEndRadius: 30,
+    borderBottomStartRadius: 30,
+    borderWidth: 1,
+    flexDirection: "row",
   },
   Bluetooth: {
-  color: 'black',
-  textAlign: 'center',
-  top: 70,
-  left: 15,
-  fontSize: 25,
-  width: 300,
-  fontFamily: 'Times New Roman'
+    color: "black",
+    textAlign: "center",
+    top: 70,
+    left: 15,
+    fontSize: 25,
+    width: 300,
+    fontFamily: "Times New Roman",
   },
   modalContainer: {
-    opacity: 100
+    opacity: 100,
   },
   ModalView: {
     opacity: 100,
     top: 70,
-    left: 10
+    left: 10,
   },
   backButton: {
     top: 60,
@@ -189,5 +241,30 @@ const styles = StyleSheet.create({
   body: {
     backgroundColor: "white",
     flex: 1,
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+    elevation: 10,
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center",
   },
 });
