@@ -27,34 +27,22 @@ export default function RoomOne({ navigation }) {
     >
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
-          <Text>What do you want to do with this window?</Text>
-          <TouchableOpacity>
-            <View>
-              <Text>Reassign</Text>
-            </View>
-          </TouchableOpacity>
-          {/* <View style={styles.line}></View> */}
-          <TouchableOpacity onPress={() => setModalVisible(false)}>
-            <View>
-              <Text>Disconnect</Text>
-            </View>
-          </TouchableOpacity>
-
-          {/* <Text style={styles.modalText}>Schedule window 1 close or open</Text>
-          <View>
-            <Text>This is a Modal</Text>
+         <Text style={styles.Bluetooth}> What do you want to do with this window? </Text>
+                <View style={styles.background}>
+                  <TouchableOpacity onPress={() => navigation.navigate("AssignRoom") + setModalVisible(false)}>
+                    <View style={styles.reassign}>
+                      <Text style={styles.reassignText}>Reassign</Text>
+                    </View>
+                  </TouchableOpacity>
+                  <View style={styles.line}></View>
+                  <TouchableOpacity onPress={() => setModalVisible(false)}>
+                    <View style={styles.disconnect}>
+                      <Text style={styles.disconnectText}>Disconnect</Text>
+                    </View>
+                  </TouchableOpacity>
+                </View>
           </View>
-          <TouchableOpacity style={styles.submitButton}>
-            <Text style={styles.submitText}>Button</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.closeButton}
-            onPress={() => setModalVisible(false)}
-          >
-            <Text style={styles.closeText}>Close</Text>
-          </TouchableOpacity> */}
         </View>
-      </View>
     </Modal>
   );
 
@@ -98,14 +86,18 @@ export default function RoomOne({ navigation }) {
           <Text style={styles.header}>Room 1</Text>
         </View>
 
-        <View style={styles.windowContainer}>
+        <View style={styles.windowContainerOne}>
           <TouchableOpacity onPress={() => setModalVisible(!modalVisible)}>
             <Text style={styles.windowOne}>Window 1</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => setModalOpen(true)}>
+        </View>
+        <View style={styles.windowContainerTwo}>
+          <TouchableOpacity onPress={() => setModalVisible(!modalVisible)}>
             <Text style={styles.windowTwo}>Window 2</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => setModalOpen(true)}>
+        </View>
+        <View style={styles.windowContainerThree}>
+          <TouchableOpacity onPress={() => setModalVisible(!modalVisible)}>
             <Text style={styles.windowThree}>Window 3</Text>
           </TouchableOpacity>
         </View>
@@ -132,6 +124,7 @@ const styles = StyleSheet.create({
     fontFamily: "Times New Roman",
   },
   reassign: {
+    top: 0,
     left: 50,
     width: 120,
     height: 65,
@@ -166,8 +159,8 @@ const styles = StyleSheet.create({
   background: {
     backgroundColor: "white",
     height: 65,
-    top: 130,
-    left: -1,
+    top: 35,
+    left: 0,
     width: 345,
     borderBottomEndRadius: 30,
     borderBottomStartRadius: 30,
@@ -175,12 +168,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   Bluetooth: {
+    paddingTop: 20,
     color: "black",
     textAlign: "center",
-    top: 70,
-    left: 15,
+    top: 5,
+    left: 0,
     fontSize: 25,
-    width: 300,
+    width: 200,
     fontFamily: "Times New Roman",
   },
   modalContainer: {
@@ -206,26 +200,19 @@ const styles = StyleSheet.create({
     top: 10,
   },
   windowOne: {
-    backgroundColor: "white",
-    fontSize: 21,
-    padding: 10,
-    borderWidth: 1,
-    borderTopColor: "white",
-    borderEndColor: "white",
-    borderStartColor: "white",
     fontFamily: "Times New Roman",
+    fontSize: 25,
   },
   windowTwo: {
-    backgroundColor: "white",
-    fontSize: 21,
-    padding: 10,
-    borderWidth: 1,
-    borderTopColor: "white",
-    borderEndColor: "white",
-    borderStartColor: "white",
     fontFamily: "Times New Roman",
+    fontSize: 25,
   },
   windowThree: {
+    fontFamily: "Times New Roman",
+    fontSize: 25,
+  },
+  windowContainerOne: {
+    top: 100,
     backgroundColor: "white",
     fontSize: 21,
     padding: 10,
@@ -235,8 +222,27 @@ const styles = StyleSheet.create({
     borderStartColor: "white",
     fontFamily: "Times New Roman",
   },
-  windowContainer: {
+  windowContainerTwo: {
     top: 100,
+    backgroundColor: "white",
+    fontSize: 21,
+    padding: 10,
+    borderWidth: 1,
+    borderTopColor: "white",
+    borderEndColor: "white",
+    borderStartColor: "white",
+    fontFamily: "Times New Roman",
+  },
+  windowContainerThree: {
+    top: 100,
+    backgroundColor: "white",
+    fontSize: 21,
+    padding: 10,
+    borderWidth: 1,
+    borderTopColor: "white",
+    borderEndColor: "white",
+    borderStartColor: "white",
+    fontFamily: "Times New Roman",
   },
   body: {
     backgroundColor: "white",
@@ -249,10 +255,13 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0, 0, 0, 0.5)",
   },
   modalView: {
-    margin: 20,
+    top: -130,
+    borderWidth: 1,
+    margin: 100,
     backgroundColor: "white",
     borderRadius: 20,
-    padding: 35,
+    width: 345,
+    padding: 0,
     alignItems: "center",
     shadowColor: "#000",
     shadowOffset: {

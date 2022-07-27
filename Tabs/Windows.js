@@ -30,8 +30,8 @@ export default function Windows({navigation}) {
   const [activeSwitch, setActiveSwitch] = useState(null);
 
   const turnOn = () => {
-    console.log("turning on led")
-    axios.get('http://192.168.1.143/led1on').then((res) => {
+    console.log("turning motor")
+    axios.get('http://172.20.10.4/motor?cw=on').then((res) => {
       console.log(res)
     }).catch((err) => {
       console.log(err)
@@ -39,7 +39,7 @@ export default function Windows({navigation}) {
   }
   const turnOff = () => {
     console.log("turning on led")
-    axios.get('http://192.168.1.143/led1off').then((res) => {
+    axios.get('http://172.20.10.4/motor?ccw=on').then((res) => {
       console.log(res)
     }).catch((err) => {
       console.log(err)
@@ -195,6 +195,7 @@ const styles = StyleSheet.create({
         backgroundColor: "white",
         fontSize: 25,
         padding: 10,
+        fontFamily: "Times New Roman"
     },
     roomTwoContainer: {
       backgroundColor: "white",
@@ -209,6 +210,7 @@ const styles = StyleSheet.create({
         backgroundColor: "white",
         fontSize: 25,
         padding: 10,
+        fontFamily: "Times New Roman"
     },
     roomThreeContainer: {
         backgroundColor: "white",
@@ -223,6 +225,7 @@ const styles = StyleSheet.create({
         backgroundColor: "white",
         fontSize: 25,
         padding: 10,
+        fontFamily: "Times New Roman"
     },
     greenButton: {
         top: 40,
