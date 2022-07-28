@@ -12,25 +12,56 @@ const Tab = createBottomTabNavigator();
 const Tabs = () => {
     return (
 
-            <Tab.Navigator style={styles.headerFonts}>
-                <Tab.Screen name="Your Rooms" component={Windows} 
-                    style={styles.roomFont}
-                    options = {{
-                            headerShown: false,
-                            tabBarIcon: ( {color} ) => {
-                                // 
-                                <Text> Does this work </Text>
-                            }
-                        }} />
-                <Tab.Screen name="Scheduling" component={Scheduling} style={styles.scheduleFont}/>
-                <Tab.Screen name="Add a new Device" component={AddDevice} style={styles.deviceFont}/>
-            </Tab.Navigator>
+        <Tab.Navigator style={styles.headerFonts}>
+            <Tab.Screen
+                name='Your Room'
+                component={Windows}
+                options={{
+                    tabBarIcon: ({ color }) => (
+                        <Image
+                            style={styles.bottomTabIcon}
+                            source={require('../../assets/Icons/window.png')}
+                        />
+                    ),
+                    tabBarShowLabel: false,
+                    headerShown: false,
+                }}
+            />
+            <Tab.Screen
+            name='Scheduling'
+            component={Scheduling}
+            options={{
+              tabBarIcon: ({ color }) => (
+                <Image
+                  style={styles.bottomTabIcon}
+                  source={require('../../assets/Icons/calender.png')}
+                />
+              ),
+              tabBarShowLabel: false,
+              headerShown: false,
+            }}
+          />
+            <Tab.Screen
+            name='Add a new Device'
+            component={AddDevice}
+            options={{
+              tabBarIcon: ({ color }) => (
+                <Image
+                  style={styles.bottomTabIcon}
+                  source={require('../../assets/Icons/add.png')}
+                />
+              ),
+              tabBarShowLabel: false,
+              headerShown: false,
+            }}
+          />
+        </Tab.Navigator>
 
     )
 }
 
 
-export default  Tabs;
+export default Tabs;
 
 const styles = StyleSheet.create({
     roomFont: 'Times New Roman'
