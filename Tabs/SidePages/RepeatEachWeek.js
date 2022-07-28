@@ -104,22 +104,20 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   confirmButton: {
-    left: 135,
-    width: 120,
-    height: 45,
-    borderWidth: 1,
-    borderRadius: 9,
-    textAlign: "center",
-    alignContent: "center",
-    justifyContent: "center",
-    top: 250,
-    backgroundColor: "white",
+        top: 80,
+        width: 269,
+        height: 67,
+        borderRadius: 100,
+        borderColor: "white",
+        backgroundColor: "#361A36",
+        justifyContent: "center"
   },
   confirmText: {
     textAlign: "center",
     left: -3,
     fontFamily: "Times New Roman",
-    fontSize: 18,
+    fontSize: 24,
+    color: "white"
   },
   weekDay: {
     fontFamily: "Times New Roman",

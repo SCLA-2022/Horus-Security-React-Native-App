@@ -16,6 +16,8 @@ import RepeatEachWeek from "./Tabs/SidePages/RepeatEachWeek";
 import LoginScreen from "./Tabs/LoginScreen";
 import AssignRoom from "./Tabs/SidePages/AssignRoom";
 
+import { useFonts } from "expo-font";
+
 const Stack = createNativeStackNavigator();
 
 const Stacks = () => {
@@ -36,6 +38,12 @@ const Stacks = () => {
 
 
 export default function App() {
+
+  const [loaded] = useFonts({
+    DoppioOne: require('./assets/fonts/DoppioOne-Regular.ttf'),
+    ZenDots: require('./assets/fonts/ZenDots-Regular.ttf')
+  })
+
   return (
     <NavigationContainer>
       <Stacks/>

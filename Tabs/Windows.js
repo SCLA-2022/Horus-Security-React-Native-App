@@ -15,6 +15,7 @@ import RoomOne from "./SidePages/RoomOne";
 import RoomTwo from "./SidePages/RoomTwo";
 import RoomThree from "./SidePages/RoomThree";
 import axios from "axios";
+import { useFonts } from "expo-font/build/FontHooks";
 
 // Previous Window Object List
 // const windowObject = {
@@ -26,6 +27,14 @@ import axios from "axios";
 
 
 export default function Windows({navigation}) {
+
+  const [loaded] = useFonts({
+    DoppioOne: require('../assets/fonts/DoppioOne-Regular.ttf'),
+    ZenDots: require('../assets/fonts/ZenDots-Regular.ttf')
+  })
+
+
+
   const [isEnabled, setIsEnabled] = useState(false);
   const [activeSwitch, setActiveSwitch] = useState(null);
 
@@ -74,22 +83,18 @@ export default function Windows({navigation}) {
   return (
     <View style={styles.Body}>
     <>
-      {/* <View style={styles.addDeleteRoom}>
-        <TouchableOpacity>
-            <Text style={styles.addRoomText}>Add Room</Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-            <Text style={styles.deleteRoomText}>Delete Room</Text>
-        </TouchableOpacity>
-      </View> */}
+    <View>
+      <Text style={{alignSelf: 'center', color: '#361A36', fontSize: 40, fontWeight: "400", lineHeight: 48, marginTop: 85, fontFamily: 'ZenDots'}}>Your Rooms</Text>
+    </View>
+
 
       <View style={styles.roomOneContainer}>
         <TouchableOpacity onPress={() => navigation.navigate("RoomOne")}>
           <Text style={styles.roomOneText}>Room 1</Text>
         </TouchableOpacity>
         <Switch
-          top={10}
-          left={220}
+          
+          left={200}
           trackColor={{ false: "#767577", true: "#361A36" }}
           thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
           ios_backgroundColor="#E3E3E3"
@@ -98,13 +103,14 @@ export default function Windows({navigation}) {
         />
       </View>
 
+      <View style = {{borderWidth:1, backgroundColor:'red', width: 377, alignSelf:'center', marginTop: 10}}></View>
+
       <View style={styles.roomTwoContainer}>
         <TouchableOpacity onPress={() => navigation.navigate("RoomTwo")}>
           <Text style={styles.roomTwoText}>Room 2</Text>
         </TouchableOpacity>
         <Switch
-          top={10}
-          left={220}
+          left={200}
           trackColor={{ false: "#767577", true: "#361A36" }}
           thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
           ios_backgroundColor="#E3E3E3"
@@ -113,13 +119,14 @@ export default function Windows({navigation}) {
         />
       </View>
 
+      <View style = {{borderWidth:1, backgroundColor:'red', width: 377, alignSelf:'center', marginTop: 10}}></View>
+
       <View style={styles.roomThreeContainer}>
         <TouchableOpacity onPress={() => navigation.navigate("RoomThree")}>
           <Text style={styles.roomThreeText}>Room 3</Text>
         </TouchableOpacity>
         <Switch
-          top={10}
-          left={220}
+          left={200}
           trackColor={{ false: "#767577", true: "#361A36" }}
           thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
           ios_backgroundColor="#E3E3E3"
@@ -185,50 +192,40 @@ const styles = StyleSheet.create({
     roomOneContainer: {
       backgroundColor: "white",
       flexDirection: "row",
-      top: 35,
-      borderWidth: 1,
-      borderTopColor: 'white',
-      borderEndColor: 'white',
-      borderStartColor: 'white',
+      marginTop: 61,
+     
     },
     roomOneText: {
         backgroundColor: "white",
-        fontSize: 25,
-        padding: 10,
-        fontFamily: "Times New Roman"
+        fontSize: 26,
+        marginLeft: 28,       
+        fontFamily: "DoppioOne"
     },
     roomTwoContainer: {
       backgroundColor: "white",
       flexDirection: "row",
-      top: 35,
-      borderWidth: 1,
-      borderTopColor: 'white',
-      borderEndColor: 'white',
-      borderStartColor: 'white'
+      marginTop: 10,
     },
     roomTwoText: {
         backgroundColor: "white",
-        fontSize: 25,
-        padding: 10,
-        fontFamily: "Times New Roman"
+        fontSize: 26,
+        marginLeft: 28,
+        fontFamily: "DoppioOne"
     },
     roomThreeContainer: {
         backgroundColor: "white",
         flexDirection: "row",
-        top: 35,
-        borderWidth: 1,
-        borderTopColor: 'white',
-        borderEndColor: 'white',
-        borderStartColor: 'white'
+        marginTop: 10,
+       
     },
     roomThreeText: {
         backgroundColor: "white",
-        fontSize: 25,
-        padding: 10,
-        fontFamily: "Times New Roman"
+        fontSize: 26,
+        marginLeft: 28,
+        fontFamily: "DoppioOne"
     },
     greenButton: {
-        top: 40,
+        
         borderWidth: 3,
         backgroundColor: 'white',
         width: 269,
@@ -237,14 +234,13 @@ const styles = StyleSheet.create({
     },
     openText: {
         fontSize: 20,
-        fontFamily: "Times New Roman",
+        fontFamily: "ZenDots",
         padding: 0,
         top: 20,
         textAlign: 'center',
         justifyContent: 'center'
     },
     redButton: {
-        top: 80,
         backgroundColor: "#F37C7C",
         width: 269,
         height: 67,
@@ -257,16 +253,16 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         justifyContent: 'center',
         color: "white",
-        fontFamily: "Times New Roman"
+        fontFamily: "ZenDots"
     },
     openShield: {
-        top: 195,
+        marginTop: 176,
         alignItems: "center",
         justifyContent: "center",
         borderRadius: 100,
     },
     closeShield: {
-        top: 210,
+        marginTop: 57,
         alignItems: "center",
         justifyContent: "center",
         borderRadius: 100
