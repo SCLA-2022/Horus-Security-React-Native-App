@@ -126,6 +126,7 @@ const CustomTimePicker = (props) => {
 
                     <View style={{ marginTop: 20 }}>
                       <DateTimePicker
+                        textColor = {'#361A36'}
                         display={Platform.OS === 'ios' ? 'spinner' : 'default'}
 
                         value={new Date(date)}
