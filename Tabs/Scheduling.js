@@ -8,6 +8,7 @@ import {
   Platform,
   Switch,
   Modal,
+  Image,
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
@@ -81,13 +82,13 @@ const CustomTimePicker = (props) => {
 
         <View style={{ flexDirection: 'row', marginTop: 23, marginLeft: 36 }}>
           <View style={{ position: 'relative', borderWidth: 1, borderColor: '#361A36', height: 57, width: 74, justifyContent: 'center', borderRadius: 3 }}>
-            <Text style={{ alignSelf: 'center' }}> {showHours(date.hour())} </Text>
+            <Text style={{ alignSelf: 'center', fontFamily: 'ZenDots' }}> {showHours(date.hour())} </Text>
           </View>
 
           <Text style={{ alignSelf: 'center', fontSize: 30 }}> : </Text>
 
           <View style={{ position: 'relative', borderWidth: 1, borderColor: '#361A36', height: 57, width: 74, justifyContent: 'center', borderRadius: 3 }}>
-            <Text style={{ alignSelf: 'center' }}> {showMinutes(date.minute())} </Text>
+            <Text style={{ alignSelf: 'center', fontFamily: 'ZenDots' }}> {showMinutes(date.minute())} </Text>
           </View>
 
           <Modal
@@ -174,7 +175,7 @@ const CustomTimePicker = (props) => {
         }}
           style={{ position: 'relative', borderWidth: 1, borderColor: '#361A36', height: 36, width: 75, justifyContent: 'center', borderRadius: 3, backgroundColor: pressed ? 'purple' : 'white', marginRight: 13 }}>
 
-          <Text style={[{ alignSelf: 'center' }, , { color: pressed ? 'white' : 'black', fontSize: 15, fontWeight: '400', lineHeight: 18 }]}> am </Text>
+          <Text style={[{ alignSelf: 'center' }, , { color: pressed ? 'white' : 'black', fontSize: 15, fontWeight: '400', lineHeight: 18, fontFamily: 'ZenDots' }]}> am </Text>
 
         </TouchableOpacity>
 
@@ -188,7 +189,7 @@ const CustomTimePicker = (props) => {
         }}
           style={{ position: 'relative', borderWidth: 1, borderColor: '#361A36', height: 36, width: 75, justifyContent: 'center', borderRadius: 3, backgroundColor: pressed2 ? 'purple' : 'white' }}>
 
-          <Text style={[{ alignSelf: 'center' }, { color: pressed2 ? 'white' : 'black', fontSize: 15, fontWeight: '400', lineHeight: 18 }]}> pm </Text>
+          <Text style={[{ alignSelf: 'center' }, { color: pressed2 ? 'white' : 'black', fontSize: 15, fontWeight: '400', lineHeight: 18, fontFamily: 'ZenDots' }]}> pm </Text>
 
         </TouchableOpacity>
 
@@ -207,7 +208,7 @@ export default function Scheduling({ navigation }) {
     { label: "All Rooms", value: "window1" },
     { label: "Room 1", value: "window2" },
     { label: "Room 2", value: "window3" },
-    { label: "Room 3", value: "window4" },
+    // { label: "Room 3", value: "window4" },
   ]);
 
   const [date, setDate] = useState(new Date());
@@ -222,38 +223,6 @@ export default function Scheduling({ navigation }) {
   const buttonBg = toggle ? "#361A36" : "#FFFFFF"
   const textColor = toggle ? "#FFFFFF" : "#361A36"
 
-
-  const _onPress = () => {
-    const newToggle = !toggle.toggle
-    setToggle({ toggle: newToggle })
-  }
-
-
-
-  const onChange = (event, selectedDate) => {
-    const currentDate = selectedDate || date;
-    setShow(Platform.OS === "ios");
-    setDate(currentDate);
-
-    let tempDate = new Date(currentDate);
-    let fDate =
-      tempDate.getDate() +
-      "/" +
-      (tempDate.getMonth() + 1) +
-      "/" +
-      tempDate.getFullYear();
-    let fTime =
-      "Hours: " + tempDate.getHours() + " | Minutes: " + tempDate.getMinutes();
-    setText(fDate + "\n" + fTime);
-
-    setTime({ hours: tempDate.getHours(), minutes: tempDate.getMinutes() })
-    console.log(time);
-  };
-
-  const showMode = (currentMode) => {
-    setShow(true);
-    setMode(currentMode);
-  };
 
   const [isEnabled, setIsEnabled] = useState(false);
   const [activeSwitch, setActiveSwitch] = useState(null);
@@ -279,8 +248,25 @@ export default function Scheduling({ navigation }) {
   return (
     <View style={styles.Body}>
 
-      <Text style={{ marginTop: 80, alignSelf: 'center', fontSize: 30, fontWeight: '400', color: '#361A36' }}> Shield Schedule </Text>
 
+      <View style = {{ display: 'flex',justifyContent: 'center', flexDirection: 'row',  marginTop: 80}}>
+        <Text style={{ alignSelf: 'center', fontSize: 25,lineHeight: 36, fontWeight: '400', color: '#361A36', fontFamily: "ZenDots", marginLeft: 20 }}> Shield Schedule </Text>
+        <View style={{right: 10}}>
+        <DropDownPicker
+          style = {{backgroundColor: '#361A36', width: 57, height: 48, alignSelf: 'center'}}
+          ArrowDownIconComponent = {({style}) => <Image  resizeMode="stretch" source = {require('../assets/Icons/arrowIcon.png')} style={{ width: 15, height: 8, left: -10}} />}
+          containerStyle = {{width: 100, borderRadius: 20,}}
+          
+          placeholder=""
+          open={open}
+          value={null}
+          items={items}
+          setOpen={setOpen}
+          setValue={setValue}
+          setItems={setItems}
+      />
+      </View>
+      </View>
       <Text style={styles.ShieldText}> Open Shields </Text>
 
       {/* This view is the parent and everything within it is the child */}
@@ -353,9 +339,9 @@ export default function Scheduling({ navigation }) {
 
 const styles = StyleSheet.create({
   ShieldText: {
-    fontFamily: "Times New Roman",
-    fontSize: 30,
-    marginLeft: 36,
+    fontFamily: "ZenDots",
+    fontSize: 23,
+    marginLeft: 30,
     marginTop: 84
   },
   repeat: {
@@ -368,8 +354,8 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   repeatEveryText: {
-    fontFamily: "Times New Roman",
-    fontSize: 12,
+    fontFamily: 'ZenDots',
+    fontSize: 10,
     fontWeight: '400',
     lineHeight: 14,
     textAlign: 'center',

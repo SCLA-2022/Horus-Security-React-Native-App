@@ -44,6 +44,10 @@ export default function App() {
     ZenDots: require('./assets/fonts/ZenDots-Regular.ttf')
   })
 
+
+  if(!loaded) {
+    return null;
+  }
   return (
     <NavigationContainer>
       <Stacks/>

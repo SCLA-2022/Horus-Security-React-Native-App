@@ -28,13 +28,6 @@ import { useFonts } from "expo-font/build/FontHooks";
 
 export default function Windows({navigation}) {
 
-  const [loaded] = useFonts({
-    DoppioOne: require('../assets/fonts/DoppioOne-Regular.ttf'),
-    ZenDots: require('../assets/fonts/ZenDots-Regular.ttf')
-  })
-
-
-
   const [isEnabled, setIsEnabled] = useState(false);
   const [activeSwitch, setActiveSwitch] = useState(null);
 
@@ -84,7 +77,7 @@ export default function Windows({navigation}) {
     <View style={styles.Body}>
     <>
     <View>
-      <Text style={{alignSelf: 'center', color: '#361A36', fontSize: 40, fontWeight: "400", lineHeight: 48, marginTop: 85, fontFamily: 'ZenDots'}}>Your Rooms</Text>
+      <Text style={{alignSelf: 'center', color: '#361A36', fontSize: 40, fontWeight: "400", lineHeight: 48, marginTop: 100, fontFamily: 'ZenDots'}}>Your Rooms</Text>
     </View>
 
 
@@ -159,23 +152,6 @@ export default function Windows({navigation}) {
 }
 
 const styles = StyleSheet.create({
-    addDeleteRoom: {
-        flexDirection: "row",
-        padding: 10
-    },
-    addRoomText: {
-        fontFamily: "Times New Roman",
-        textAlign: "left",
-        padding: 10,
-        fontSize: 15,
-    },
-    deleteRoomText: {
-        fontFamily: "Times New Roman",
-        left: 185,
-        textAlign: "right",
-        padding: 10,
-        fontSize: 15,
-    },
     Windows: {
         backgroundColor: "white"
     },

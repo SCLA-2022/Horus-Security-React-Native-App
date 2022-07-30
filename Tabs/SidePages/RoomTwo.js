@@ -82,25 +82,32 @@ export default function RoomOne({ navigation }) {
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <Text style={styles.back}> Back </Text>
           </TouchableOpacity>
-
-          <Text style={styles.header}>Room 2</Text>
         </View>
-
+        
+          <Text style={{alignSelf: 'center', color: '#361A36', fontSize: 40, fontWeight: "400", lineHeight: 48, marginTop: 30, fontFamily: 'ZenDots'}}>Room 2</Text>
+        <View style={styles.hopefullyeverythingturnsoutfinebuteventheniwillpushforwardhopefullythingsturnoutalrightwithhardwork}>
         <View style={styles.windowContainerOne}>
           <TouchableOpacity onPress={() => setModalVisible(!modalVisible)}>
             <Text style={styles.windowOne}>Window 1</Text>
           </TouchableOpacity>
         </View>
+
+        <View style = {{borderWidth:1, backgroundColor:'red', width: 377, alignSelf:'center', marginTop: 0}}></View>
+
         <View style={styles.windowContainerTwo}>
           <TouchableOpacity onPress={() => setModalVisible(!modalVisible)}>
             <Text style={styles.windowTwo}>Window 2</Text>
           </TouchableOpacity>
         </View>
+
+        <View style = {{borderWidth:1, backgroundColor:'red', width: 377, alignSelf:'center', marginTop: 0}}></View>
+
         <View style={styles.windowContainerThree}>
           <TouchableOpacity onPress={() => setModalVisible(!modalVisible)}>
             <Text style={styles.windowThree}>Window 3</Text>
           </TouchableOpacity>
         </View>
+      </View>
       </View>
     </>
   );
@@ -113,7 +120,7 @@ const styles = StyleSheet.create({
     borderBottomColor: "transparent",
   },
   disconnect: {
-    left: 100,
+    marginLeft: 100,
     width: 120,
     height: 65,
   },
@@ -139,19 +146,14 @@ const styles = StyleSheet.create({
   theModal: {
     width: 345,
     height: 189,
-    top: 180,
     backgroundColor: "white",
-    left: 21,
-    borderTopEndRadius: 30,
-    borderTopStartRadius: 30,
-    borderWidth: 1,
+    
   },
   container: {
     width: 345,
     height: 189,
     top: 180,
     backgroundColor: "white",
-    left: 21,
     borderTopEndRadius: 30,
     borderTopStartRadius: 30,
     borderWidth: 1,
@@ -186,8 +188,8 @@ const styles = StyleSheet.create({
     left: 10,
   },
   backButton: {
-    top: 60,
-    left: 10,
+    marginTop: 60,
+    marginLeft: 10,
     flexDirection: "row",
   },
   header: {
@@ -197,51 +199,45 @@ const styles = StyleSheet.create({
     fontFamily: "Times New Roman",
   },
   back: {
-    top: 10,
+    marginTop: 0,
+    marginLeft: 30,
+    fontFamily: "DoppioOne"
+
   },
   windowOne: {
-    fontFamily: "Times New Roman",
-    fontSize: 25,
+    backgroundColor: "white",
+    fontSize: 26,
+    marginLeft: 28,
+    fontFamily: "DoppioOne"
   },
   windowTwo: {
-    fontFamily: "Times New Roman",
-    fontSize: 25,
+    backgroundColor: "white",
+    fontSize: 26,
+    marginLeft: 28,
+    fontFamily: "DoppioOne"
   },
   windowThree: {
-    fontFamily: "Times New Roman",
-    fontSize: 25,
+    backgroundColor: "white",
+    fontSize: 26,
+    marginLeft: 28,
+    fontFamily: "DoppioOne"
   },
   windowContainerOne: {
-    top: 100,
     backgroundColor: "white",
     fontSize: 21,
     padding: 10,
-    borderWidth: 1,
-    borderTopColor: "white",
-    borderEndColor: "white",
-    borderStartColor: "white",
     fontFamily: "Times New Roman",
   },
   windowContainerTwo: {
-    top: 100,
     backgroundColor: "white",
     fontSize: 21,
     padding: 10,
-    borderWidth: 1,
-    borderTopColor: "white",
-    borderEndColor: "white",
-    borderStartColor: "white",
     fontFamily: "Times New Roman",
   },
   windowContainerThree: {
-    top: 100,
     backgroundColor: "white",
     fontSize: 21,
     padding: 10,
-    borderWidth: 1,
-    borderTopColor: "white",
-    borderEndColor: "white",
-    borderStartColor: "white",
     fontFamily: "Times New Roman",
   },
   body: {
@@ -276,4 +272,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     textAlign: "center",
   },
+  hopefullyeverythingturnsoutfinebuteventheniwillpushforwardhopefullythingsturnoutalrightwithhardwork: {
+    marginTop: 40
+  }
 });

@@ -20,7 +20,7 @@ const Tabs = () => {
                     tabBarIcon: ({ color }) => (
                         <Image
                             style={styles.bottomTabIcon}
-                            source={require('../../assets/Icons/window.png')}
+                            source= {require('../../assets/Icons/windowIcon.png')}
                         />
                     ),
                     tabBarShowLabel: false,
@@ -34,7 +34,7 @@ const Tabs = () => {
               tabBarIcon: ({ color }) => (
                 <Image
                   style={styles.bottomTabIcon}
-                  source={require('../../assets/Icons/calender.png')}
+                  source={require('../../assets/Icons/calenderIcon.png')}
                 />
               ),
               tabBarShowLabel: false,
@@ -48,7 +48,7 @@ const Tabs = () => {
               tabBarIcon: ({ color }) => (
                 <Image
                   style={styles.bottomTabIcon}
-                  source={require('../../assets/Icons/add.png')}
+                  source={require('../../assets/Icons/addIcon.png')}
                 />
               ),
               tabBarShowLabel: false,

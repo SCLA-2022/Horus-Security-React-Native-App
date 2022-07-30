@@ -11,91 +11,66 @@ import {
   import { StatusBar } from "expo-status-bar";
   import { NavigationContainer } from "@react-navigation/native";
   import React, { useState } from "react";
+  import Checkbox from "expo-checkbox";
   
   export default function AssignRoom({ navigation }) {
-    const [modalVisible, setModalVisible] = useState(false);
-  
-    const inputModal = () => (
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
-          setModalVisible(!modalVisible);
-        }}
-      >
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-           <Text style={styles.Bluetooth}> What do you want to do with this window? </Text>
-                  <View style={styles.background}>
-                    <TouchableOpacity>
-                      <View style={styles.reassign}>
-                        <Text style={styles.reassignText}>Reassign</Text>
-                      </View>
-                    </TouchableOpacity>
-                    <View style={styles.line}></View>
-                    <TouchableOpacity onPress={() => setModalVisible(false)}>
-                      <View style={styles.disconnect}>
-                        <Text style={styles.disconnectText}>Disconnect</Text>
-                      </View>
-                    </TouchableOpacity>
-                  </View>
-            </View>
-          </View>
-      </Modal>
-    );
-  
+    const [isChecked, setChecked] = useState(false);
+    
     return (
       <>
-        {/* <View style={styles.modalContainer}> */}
-        {/* <Modal style={styles.theModal} visible={modalOpen} animationType="fade"> */}
-        {/* <View style={styles.ModalView}>
-              <TouchableOpacity onPress={() => setModalOpen(false)}>
-                <Text style={styles.modalText}>Back</Text>
-              </TouchableOpacity>
-            </View> */}
-        {/* <View style={styles.container}>
-              <Text style={styles.Bluetooth}>
-                {" "}
-                What do you want to do with this window?{" "}
-              </Text>
-              <View style={styles.background}>
-                <TouchableOpacity>
-                  <View style={styles.reassign}>
-                    <Text style={styles.reassignText}>Reassign</Text>
-                  </View>
-                </TouchableOpacity>
-                <View style={styles.line}></View>
-                <TouchableOpacity>
-                  <View style={styles.disconnect}>
-                    <Text style={styles.disconnectText}>Disconnect</Text>
-                  </View>
-                </TouchableOpacity>
-              </View>
-            </View>
-          </Modal>
-        </View> */}
-        {inputModal()}
         <View style={styles.body}>
           <View style={styles.backButton}>
             <TouchableOpacity onPress={() => navigation.goBack()}>
               <Text style={styles.back}> Back </Text>
             </TouchableOpacity>
-  
-            <Text style={styles.header}></Text>
-          </View>
-  
-          <View style={styles.windowContainer}>
-            <TouchableOpacity onPress={() => setModalVisible(!modalVisible)}>
-              <Text style={styles.windowOne}>Window 1</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => setModalOpen(true)}>
-              <Text style={styles.windowTwo}>Window 2</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => setModalOpen(true)}>
-              <Text style={styles.windowThree}>Window 3</Text>
-            </TouchableOpacity>
+            <Text style={styles.assignText}>Assign to Room</Text>
+            <View style={styles.roomOneContainer}>
+
+          <Text style={styles.roomOneText}>Room 1</Text>
+   
+        <View style={styles.checkboxThree}>
+        <Checkbox
+            value={isChecked}
+            onValueChange={setChecked}
+            color={isChecked ? "#361A36" : undefined}
+          />
+        </View>
+      </View>
+
+      <View style = {{borderWidth:1, backgroundColor:'red', width: 377, alignSelf:'center', marginTop: 10}}></View>
+
+      <View style={styles.roomTwoContainer}>
+      
+          <Text style={styles.roomTwoText}>Room 2</Text>
+       
+        <View style={styles.checkboxTwo}>
+        <Checkbox
+            value={isChecked}
+            onValueChange={setChecked}
+            color={isChecked ? "#361A36" : undefined}
+          />
+        </View>
+      </View>
+
+      <View style = {{borderWidth:1, backgroundColor:'red', width: 377, alignSelf:'center', marginTop: 10}}></View>
+
+      <View style={styles.roomThreeContainer}>
+       
+          <Text style={styles.roomThreeText}>Room 3</Text>
+      
+        <View style={styles.checkbox}>
+        <Checkbox
+           value={isChecked}
+            onValueChange={setChecked}
+            color={isChecked ? "#361A36" : undefined}
+          />
+        </View>
+      </View>
+      <TouchableOpacity onPress={() => navigation.navigate("Tabs")}>
+        <View style={styles.confirmButton}>
+          <Text style={styles.confirmText}> Confirm </Text>
+        </View>
+      </TouchableOpacity>
           </View>
         </View>
       </>
@@ -103,162 +78,159 @@ import {
   }
   
   const styles = StyleSheet.create({
-    line: {
-      left: 50,
-      borderWidth: 0.6,
-      borderBottomColor: "transparent",
+    confirmButton: {
+      width: 269,
+      height: 67,
+      borderRadius: 100,
+      borderColor: "white",
+      backgroundColor: "#361A36",
+      justifyContent: 'center',
+      marginLeft: 60,
+      marginTop: 100,
+},
+confirmText: {
+  textAlign: "center",
+  fontFamily: "ZenDots",
+  fontSize: 24,
+  color: "white",
+},
+    checkboxThree: {
+      marginTop: 8,
+      marginLeft: 223
     },
-    disconnect: {
-      left: 100,
-      width: 120,
-      height: 65,
+    checkboxTwo: {
+      marginTop: 8,
+      marginLeft: 219
     },
-    disconnectText: {
-      left: -20,
-      top: 16,
-      fontSize: 23,
-      fontFamily: "Times New Roman",
-    },
-    reassign: {
-      top: 0,
-      left: 50,
-      width: 120,
-      height: 65,
-    },
-    reassignText: {
-      left: -10,
-      top: 16,
-      fontSize: 23,
-      fontFamily: "Times New Roman",
-    },
-    modalText: {},
-    theModal: {
-      width: 345,
-      height: 189,
-      top: 180,
-      backgroundColor: "white",
-      left: 21,
-      borderTopEndRadius: 30,
-      borderTopStartRadius: 30,
-      borderWidth: 1,
-    },
-    container: {
-      width: 345,
-      height: 189,
-      top: 180,
-      backgroundColor: "white",
-      left: 21,
-      borderTopEndRadius: 30,
-      borderTopStartRadius: 30,
-      borderWidth: 1,
-    },
-    background: {
-      backgroundColor: "white",
-      height: 65,
-      top: 35,
-      left: 0,
-      width: 345,
-      borderBottomEndRadius: 30,
-      borderBottomStartRadius: 30,
-      borderWidth: 1,
-      flexDirection: "row",
-    },
-    Bluetooth: {
-      paddingTop: 20,
-      color: "black",
-      textAlign: "center",
-      top: 5,
-      left: 0,
-      fontSize: 25,
-      width: 200,
-      fontFamily: "Times New Roman",
-    },
-    modalContainer: {
-      opacity: 100,
-    },
-    ModalView: {
-      opacity: 100,
-      top: 70,
-      left: 10,
-    },
-    backButton: {
-      top: 60,
-      left: 10,
-      flexDirection: "row",
-    },
-    header: {
-      textAlign: "center",
-      left: 100,
-      fontSize: 30,
-      fontFamily: "Times New Roman",
+    checkbox: {
+      marginTop: 8,
+      marginLeft: 220
     },
     back: {
-      top: 10,
+      marginTop: 50,
+      marginLeft: 30,
+      fontFamily: "DoppioOne"
     },
-    windowOne: {
-      backgroundColor: "white",
-      fontSize: 21,
-      padding: 10,
-      borderWidth: 1,
-      borderTopColor: "white",
-      borderEndColor: "white",
-      borderStartColor: "white",
-      fontFamily: "Times New Roman",
+    assignText: {
+      textAlign: 'center',
+      marginTop: 50,
+      fontFamily: "ZenDots",
+      fontSize: 35,
     },
-    windowTwo: {
-      backgroundColor: "white",
-      fontSize: 21,
-      padding: 10,
-      borderWidth: 1,
-      borderTopColor: "white",
-      borderEndColor: "white",
-      borderStartColor: "white",
-      fontFamily: "Times New Roman",
-    },
-    windowThree: {
-      backgroundColor: "white",
-      fontSize: 21,
-      padding: 10,
-      borderWidth: 1,
-      borderTopColor: "white",
-      borderEndColor: "white",
-      borderStartColor: "white",
-      fontFamily: "Times New Roman",
-    },
-    windowContainer: {
-      top: 100,
+    headerBack: {
+      flexDirection: 'row',
     },
     body: {
-      backgroundColor: "white",
       flex: 1,
+      backgroundColor: 'white'
     },
-    centeredView: {
+    addDeleteRoom: {
+      flexDirection: "row",
+      padding: 10
+  },
+  addRoomText: {
+      fontFamily: "Times New Roman",
+      textAlign: "left",
+      padding: 10,
+      fontSize: 15,
+  },
+  deleteRoomText: {
+      fontFamily: "Times New Roman",
+      left: 185,
+      textAlign: "right",
+      padding: 10,
+      fontSize: 15,
+  },
+  Windows: {
+      backgroundColor: "white"
+  },
+  Body: {
       flex: 1,
-      justifyContent: "center",
-      alignItems: "center",
-      backgroundColor: "rgba(0, 0, 0, 0.5)",
-    },
-    modalView: {
-      top: -130,
-      borderWidth: 1,
-      margin: 100,
+      backgroundColor: "white"
+  },
+  yourRoom: {
       backgroundColor: "white",
-      borderRadius: 20,
-      width: 345,
-      padding: 0,
-      alignItems: "center",
-      shadowColor: "#000",
-      shadowOffset: {
-        width: 0,
-        height: 2,
-      },
-      shadowOpacity: 0.3,
-      shadowRadius: 4,
-      elevation: 10,
-    },
-    modalText: {
-      marginBottom: 15,
+      fontSize: 30,
       textAlign: "center",
-    },
+      padding: 20
+  },
+  roomOneContainer: {
+    backgroundColor: "white",
+    flexDirection: "row",
+    marginTop: 61,
+   
+  },
+  roomOneText: {
+      backgroundColor: "white",
+      fontSize: 26,
+      marginLeft: 28,       
+      fontFamily: "DoppioOne"
+  },
+  roomTwoContainer: {
+    backgroundColor: "white",
+    flexDirection: "row",
+    marginTop: 10,
+  },
+  roomTwoText: {
+      backgroundColor: "white",
+      fontSize: 26,
+      marginLeft: 28,
+      fontFamily: "DoppioOne"
+  },
+  roomThreeContainer: {
+      backgroundColor: "white",
+      flexDirection: "row",
+      marginTop: 10,
+     
+  },
+  roomThreeText: {
+      backgroundColor: "white",
+      fontSize: 26,
+      marginLeft: 28,
+      fontFamily: "DoppioOne"
+  },
+  greenButton: {
+      
+      borderWidth: 3,
+      backgroundColor: 'white',
+      width: 269,
+      height: 67,
+      borderRadius: 100
+  },
+  openText: {
+      fontSize: 20,
+      fontFamily: "ZenDots",
+      padding: 0,
+      top: 20,
+      textAlign: 'center',
+      justifyContent: 'center'
+  },
+  redButton: {
+      backgroundColor: "#F37C7C",
+      width: 269,
+      height: 67,
+      borderRadius: 100,
+      backgroundColor: "#361A36"
+  },
+  closeText: {
+      top: 20,
+      fontSize: 20,
+      textAlign: 'center',
+      justifyContent: 'center',
+      color: "white",
+      fontFamily: "ZenDots"
+  },
+  openShield: {
+      marginTop: 176,
+      alignItems: "center",
+      justifyContent: "center",
+      borderRadius: 100,
+  },
+  closeShield: {
+      marginTop: 57,
+      alignItems: "center",
+      justifyContent: "center",
+      borderRadius: 100
+  },
   });
   
