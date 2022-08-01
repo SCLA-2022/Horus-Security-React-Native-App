@@ -15,7 +15,26 @@ import Checkbox from "expo-checkbox";
 
 export default function AssignRoom({ navigation }) {
   const [isChecked, setChecked] = useState(false);
-  
+  const [activeCheck, setActiveCheck] = useState(null);
+
+  const [isChecked2, setChecked2] = useState(false);
+  const [activeCheck2, setActiveCheck2] = useState(null);
+
+  const [isChecked3, setChecked3] = useState(false);
+  const [activeCheck3, setActiveCheck3] = useState(null);
+
+  const [isChecked4, setChecked4] = useState(false);
+  const [activeCheck4, setActiveCheck4] = useState(null);
+
+  const [isChecked5, setChecked5] = useState(false);
+  const [activeCheck5, setActiveCheck5] = useState(null);
+
+  const [isChecked6, setChecked6] = useState(false);
+  const [activeCheck6, setActiveCheck6] = useState(null);
+
+  const [isChecked7, setChecked7] = useState(false);
+  const [activeCheck7, setActiveCheck7] = useState(null);
+
   return (
     <>
       <View style={styles.body}>
@@ -45,9 +64,9 @@ export default function AssignRoom({ navigation }) {
      
       <View style={styles.checkboxTwo}>
       <Checkbox
-          value={isChecked}
-          onValueChange={setChecked}
-          color={isChecked ? "#361A36" : undefined}
+          value={isChecked2}
+          onValueChange={setChecked2}
+          color={isChecked2 ? "#361A36" : undefined}
         />
       </View>
     </View>
@@ -56,13 +75,13 @@ export default function AssignRoom({ navigation }) {
 
     <View style={styles.roomThreeContainer}>
      
-        <Text style={styles.roomThreeText}>Whenesday</Text>
+        <Text style={styles.roomThreeText}>Wednesday</Text>
     
       <View style={styles.checkboxThree}>
       <Checkbox
-         value={isChecked}
-          onValueChange={setChecked}
-          color={isChecked ? "#361A36" : undefined}
+         value={isChecked3}
+          onValueChange={setChecked3}
+          color={isChecked3 ? "#361A36" : undefined}
         />
       </View>
     </View>
@@ -75,9 +94,9 @@ export default function AssignRoom({ navigation }) {
      
       <View style={styles.checkboxFour}>
       <Checkbox
-          value={isChecked}
-          onValueChange={setChecked}
-          color={isChecked ? "#361A36" : undefined}
+          value={isChecked4}
+          onValueChange={setChecked4}
+          color={isChecked4 ? "#361A36" : undefined}
         />
       </View>
     </View>
@@ -90,9 +109,9 @@ export default function AssignRoom({ navigation }) {
      
       <View style={styles.checkboxFive}>
       <Checkbox
-          value={isChecked}
-          onValueChange={setChecked}
-          color={isChecked ? "#361A36" : undefined}
+          value={isChecked5}
+          onValueChange={setChecked5}
+          color={isChecked5 ? "#361A36" : undefined}
         />
       </View>
     </View>
@@ -105,9 +124,9 @@ export default function AssignRoom({ navigation }) {
      
       <View style={styles.checkboxSix}>
       <Checkbox
-          value={isChecked}
-          onValueChange={setChecked}
-          color={isChecked ? "#361A36" : undefined}
+          value={isChecked6}
+          onValueChange={setChecked6}
+          color={isChecked6 ? "#361A36" : undefined}
         />
       </View>
     </View>
@@ -120,9 +139,9 @@ export default function AssignRoom({ navigation }) {
      
       <View style={styles.checkboxSeven}>
       <Checkbox
-          value={isChecked}
-          onValueChange={setChecked}
-          color={isChecked ? "#361A36" : undefined}
+          value={isChecked7}
+          onValueChange={setChecked7}
+          color={isChecked7 ? "#361A36" : undefined}
         />
       </View>
     </View>
@@ -165,11 +184,11 @@ color: "white",
   },
   checkboxTwo: {
     marginTop: 10,
-    marginLeft: 205
+    marginLeft: 206
   },
   checkboxThree: {
     marginTop: 10,
-    marginLeft: 165
+    marginLeft: 166
   },
   checkboxFour: {
     marginTop: 10,
@@ -177,12 +196,15 @@ color: "white",
   },
   checkboxFive: {
     marginTop: 10,
+    marginLeft: 232
   },
   checkboxSix: {
     marginTop: 10,
+    marginLeft: 198
   },
   checkboxSeven: {
     marginTop: 10,
+    marginLeft: 219
   },
   back: {
     marginTop: 50,

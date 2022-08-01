@@ -12,10 +12,18 @@ import {
   import { NavigationContainer } from "@react-navigation/native";
   import React, { useState } from "react";
   import Checkbox from "expo-checkbox";
+import { CheckBox } from "react-native-web";
   
   export default function AssignRoom({ navigation }) {
     const [isChecked, setChecked] = useState(false);
-    
+    const [activeCheck, setActiveCheck] = useState(null);
+
+    const [isChecked2, setChecked2] = useState(false);
+    const [activeCheck2, setActiveCheck2] = useState(null);
+
+    const [isChecked3, setChecked3] = useState(false);
+    const [activeCheck3, setActiveCheck3] = useState(null);
+
     return (
       <>
         <View style={styles.body}>
@@ -45,9 +53,9 @@ import {
        
         <View style={styles.checkboxTwo}>
         <Checkbox
-            value={isChecked}
-            onValueChange={setChecked}
-            color={isChecked ? "#361A36" : undefined}
+            value={isChecked2}
+            onValueChange={setChecked2}
+            color={isChecked2 ? "#361A36" : undefined}
           />
         </View>
       </View>
@@ -60,9 +68,9 @@ import {
       
         <View style={styles.checkbox}>
         <Checkbox
-           value={isChecked}
-            onValueChange={setChecked}
-            color={isChecked ? "#361A36" : undefined}
+           value={isChecked3}
+            onValueChange={setChecked3}
+            color={isChecked3 ? "#361A36" : undefined}
           />
         </View>
       </View>

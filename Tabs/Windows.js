@@ -31,6 +31,12 @@ export default function Windows({navigation}) {
   const [isEnabled, setIsEnabled] = useState(false);
   const [activeSwitch, setActiveSwitch] = useState(null);
 
+  const [isEnabled2, setIsEnabled2] = useState(false);
+  const [activeSwitch2, setActiveSwitch2] = useState(null);
+
+  const [isEnabled3, setIsEnabled3] = useState(false);
+  const [activeSwitch3, setActiveSwitch3] = useState(null);
+
   const turnOn = () => {
     console.log("turning motor")
     axios.get('http://172.20.10.4/motor?cw=on').then((res) => {
@@ -50,26 +56,22 @@ export default function Windows({navigation}) {
 
   //Three Equals is going to check for Type (if number or string, Boolean) and checks if it is the correct value
 
-  const toggleSwitch = (num) => {
-    setIsEnabled(setActiveSwitch(num === activeSwitch ? null : num));
-  };
+  // const toggleSwitch = (num) => {
+  //   setIsEnabled(setActiveSwitch(num === activeSwitch ? null : num));
+  // };
 
-  const toggleAll = (activeSwitch) => {
-    setIsEnabled(
-      setActiveSwitch(activeSwitch === Switch ? null : activeSwitch)
-    );
-  };
+
 
   //This is going to be the value of each switch
-  const switch1 = () => {
-    toggleSwitch(1);
-  };
-  const switch2 = () => {
-    toggleSwitch(2);
-  };
-  const switch3 = () => {
-    toggleSwitch(3);
-  };
+  // const switch1 = () => {
+  //   toggleSwitch(1);
+  // };
+  // const switch2 = () => {
+  //   toggleSwitch(2);
+  // };
+  // const switch3 = () => {
+  //   toggleSwitch(3);
+  // };
 
 //style={styles.} 
 //for the styles
@@ -89,10 +91,10 @@ export default function Windows({navigation}) {
           
           left={200}
           trackColor={{ false: "#767577", true: "#361A36" }}
-          thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
+          thumbColor={isEnabled ? "#fffff" : "#fffff"}
           ios_backgroundColor="#E3E3E3"
-          onValueChange={switch1}
-          value={activeSwitch === 1}
+          value={isEnabled}
+          onValueChange={setIsEnabled}
         />
       </View>
 
@@ -105,10 +107,10 @@ export default function Windows({navigation}) {
         <Switch
           left={200}
           trackColor={{ false: "#767577", true: "#361A36" }}
-          thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
+          thumbColor={isEnabled2 ? "#fffff" : "#fffff"}
           ios_backgroundColor="#E3E3E3"
-          onValueChange={switch2}
-          value={activeSwitch === 2}
+          value={isEnabled2}
+          onValueChange={setIsEnabled2}
         />
       </View>
 
@@ -121,10 +123,10 @@ export default function Windows({navigation}) {
         <Switch
           left={200}
           trackColor={{ false: "#767577", true: "#361A36" }}
-          thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
+          thumbColor={isEnabled3 ? "#fffff" : "#ffffff"}
           ios_backgroundColor="#E3E3E3"
-          onValueChange={switch3}
-          value={activeSwitch === 3}
+          value={isEnabled3}
+          onValueChange={setIsEnabled3}
         />
       </View>
 

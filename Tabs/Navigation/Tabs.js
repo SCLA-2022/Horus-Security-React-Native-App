@@ -20,7 +20,7 @@ const Tabs = () => {
                     tabBarIcon: ({ color }) => (
                         <Image
                             style={styles.bottomTabIcon}
-                            source= {require('../../assets/Icons/windowIcon.png')}
+                            source= {require('../../assets/Icons/ic_outline-window.png')}
                         />
                     ),
                     tabBarShowLabel: false,
@@ -34,7 +34,7 @@ const Tabs = () => {
               tabBarIcon: ({ color }) => (
                 <Image
                   style={styles.bottomTabIcon}
-                  source={require('../../assets/Icons/calenderIcon.png')}
+                  source={require('../../assets/Icons/uil_calender.png')}
                 />
               ),
               tabBarShowLabel: false,
@@ -47,8 +47,8 @@ const Tabs = () => {
             options={{
               tabBarIcon: ({ color }) => (
                 <Image
-                  style={styles.bottomTabIcon}
-                  source={require('../../assets/Icons/addIcon.png')}
+                  style={styles.bottomTabIconArrow}
+                  source={require('../../assets/Icons/carbon_add.png')}
                 />
               ),
               tabBarShowLabel: false,
@@ -64,5 +64,12 @@ const Tabs = () => {
 export default Tabs;
 
 const styles = StyleSheet.create({
-    roomFont: 'Times New Roman'
+bottomTabIcon: {
+  height: 50,
+  width: 50
+},
+bottomTabIconArrow: {
+  height: 70,
+  width: 70
+}
 })

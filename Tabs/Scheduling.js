@@ -173,7 +173,7 @@ const CustomTimePicker = (props) => {
             setDate(date.subtract(12, 'hours'))
           }
         }}
-          style={{ position: 'relative', borderWidth: 1, borderColor: '#361A36', height: 36, width: 75, justifyContent: 'center', borderRadius: 3, backgroundColor: pressed ? 'purple' : 'white', marginRight: 13 }}>
+          style={{ position: 'relative', borderWidth: 1, borderColor: '#361A36', height: 36, width: 75, justifyContent: 'center', borderRadius: 3, backgroundColor: pressed ? '#361A36' : 'white', marginRight: 13 }}>
 
           <Text style={[{ alignSelf: 'center' }, , { color: pressed ? 'white' : 'black', fontSize: 15, fontWeight: '400', lineHeight: 18, fontFamily: 'ZenDots' }]}> am </Text>
 
@@ -187,7 +187,7 @@ const CustomTimePicker = (props) => {
             setDate(date.add(12, 'hours'))
           }
         }}
-          style={{ position: 'relative', borderWidth: 1, borderColor: '#361A36', height: 36, width: 75, justifyContent: 'center', borderRadius: 3, backgroundColor: pressed2 ? 'purple' : 'white' }}>
+          style={{ position: 'relative', borderWidth: 1, borderColor: '#361A36', height: 36, width: 75, justifyContent: 'center', borderRadius: 3, backgroundColor: pressed2 ? '#361A36' : 'white' }}>
 
           <Text style={[{ alignSelf: 'center' }, { color: pressed2 ? 'white' : 'black', fontSize: 15, fontWeight: '400', lineHeight: 18, fontFamily: 'ZenDots' }]}> pm </Text>
 
@@ -227,22 +227,8 @@ export default function Scheduling({ navigation }) {
   const [isEnabled, setIsEnabled] = useState(false);
   const [activeSwitch, setActiveSwitch] = useState(null);
 
-  const toggleSwitch = (num) => {
-    setIsEnabled(setActiveSwitch(num === activeSwitch ? null : num));
-  };
-
-  const toggleAll = (activeSwitch) => {
-    setIsEnabled(
-      setActiveSwitch(activeSwitch === Switch ? null : activeSwitch)
-    );
-  };
-
-  const switch1 = () => {
-    toggleSwitch(1);
-  };
-  const switch2 = () => {
-    toggleSwitch(2);
-  };
+  const [isEnabled2, setIsEnabled2] = useState(false);
+  const [activeSwitch2, setActiveSwitch2] = useState(null);
 
 
   return (
@@ -254,7 +240,7 @@ export default function Scheduling({ navigation }) {
         <View style={{right: 10}}>
         <DropDownPicker
           style = {{backgroundColor: '#361A36', width: 57, height: 48, alignSelf: 'center'}}
-          ArrowDownIconComponent = {({style}) => <Image  resizeMode="stretch" source = {require('../assets/Icons/arrowIcon.png')} style={{ width: 15, height: 8, left: -10}} />}
+          ArrowDownIconComponent = {({style}) => <Image  resizeMode="stretch" source = {require('../assets/Icons/Arrow.png')} style={{ width: 15, height: 8, left: -10}} />}
           containerStyle = {{width: 100, borderRadius: 20,}}
           
           placeholder=""
@@ -284,10 +270,10 @@ export default function Scheduling({ navigation }) {
             marginTop={35}
             marginLeft={82}
             trackColor={{ false: "#767577", true: "#361A36" }}
-            thumbColor={isEnabled ? "#f5dd4b" : "white"}
-            ios_backgroundColor="white"
-            onValueChange={switch1}
-            value={activeSwitch === 1}
+            thumbColor={isEnabled ? "#fffff" : "#fffff"}
+            ios_backgroundColor="#E3E3E3"
+            value={isEnabled}
+            onValueChange={setIsEnabled}
           />
 
           <View style={styles.repeat}>
@@ -316,10 +302,10 @@ export default function Scheduling({ navigation }) {
             marginTop={35}
             marginLeft={82}
             trackColor={{ false: "#767577", true: "#361A36" }}
-            thumbColor={isEnabled ? "#f5dd4b" : "white"}
-            ios_backgroundColor="white"
-            onValueChange={switch1}
-            value={activeSwitch === 1}
+            thumbColor={isEnabled2 ? "#fffff" : "#fffff"}
+            ios_backgroundColor="#E3E3E3"
+            value={isEnabled2}
+            onValueChange={setIsEnabled2}
           />
 
           <View style={styles.repeat}>
