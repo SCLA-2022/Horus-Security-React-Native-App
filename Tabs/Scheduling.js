@@ -240,7 +240,7 @@ export default function Scheduling({ navigation }) {
         <View style={{right: 10}}>
         <DropDownPicker
           style = {{backgroundColor: '#361A36', width: 57, height: 48, alignSelf: 'center'}}
-          ArrowDownIconComponent = {({style}) => <Image  resizeMode="stretch" source = {require('../assets/Icons/Arrow.png')} style={{ width: 15, height: 8, left: -10}} />}
+          ArrowDownIconComponent = {({style}) => <Image  resizeMode="stretch" source = {require('../assets/Icons/Arrow.png')} style={{ width: 15, height: 8, left: -11}} />}
           containerStyle = {{width: 100, borderRadius: 20,}}
           
           placeholder=""
