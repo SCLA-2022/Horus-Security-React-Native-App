@@ -7,20 +7,20 @@ import {
     Switch,
     SwitchComponent,
     Modal,
+    Pressable,
   } from "react-native";
   import { StatusBar } from "expo-status-bar";
   import { NavigationContainer } from "@react-navigation/native";
   import React, { useState } from "react";
-  import Checkbox from "expo-checkbox";
-import { CheckBox } from "react-native-web";
+  import CheckBox from "react-native-check-box";
   
   export default function AssignRoom({ navigation }) {
     const [isChecked, setChecked] = useState(false);
     const [activeCheck, setActiveCheck] = useState(null);
-
+  
     const [isChecked2, setChecked2] = useState(false);
     const [activeCheck2, setActiveCheck2] = useState(null);
-
+  
     const [isChecked3, setChecked3] = useState(false);
     const [activeCheck3, setActiveCheck3] = useState(null);
 
@@ -37,11 +37,16 @@ import { CheckBox } from "react-native-web";
           <Text style={styles.roomOneText}>Room 1</Text>
    
         <View style={styles.checkboxThree}>
-        <Checkbox
-            value={isChecked}
-            onValueChange={setChecked}
-            color={isChecked ? "#361A36" : undefined}
-          />
+        <CheckBox
+         onClick={()=>{
+          setChecked(!isChecked)
+         }}
+          isChecked={isChecked}
+          leftText={"CheckBox"}
+
+     checkedImage = {<View style={{width: 30, height: "auto"}}><Text style = {{fontSize: 20, color: '#361A36'}}> ✓ </Text></View>}
+     unCheckedImage = {<View style = {{ width: 50, height: 20}}></View>}
+      />
         </View>
       </View>
 
@@ -52,11 +57,16 @@ import { CheckBox } from "react-native-web";
           <Text style={styles.roomTwoText}>Room 2</Text>
        
         <View style={styles.checkboxTwo}>
-        <Checkbox
-            value={isChecked2}
-            onValueChange={setChecked2}
-            color={isChecked2 ? "#361A36" : undefined}
-          />
+        <CheckBox
+         onClick={()=>{
+          setChecked2(!isChecked2)
+         }}
+          isChecked={isChecked2}
+          leftText={"CheckBox"}
+
+     checkedImage = {<View style={{width: 100, height: 20}}><Text style = {{fontSize: 20, color: '#361A36'}}> ✓ </Text></View>}
+     unCheckedImage = {<View style = {{ width: 100, height: 20}}></View>}
+      />
         </View>
       </View>
 
@@ -67,11 +77,16 @@ import { CheckBox } from "react-native-web";
           <Text style={styles.roomThreeText}>Room 3</Text>
       
         <View style={styles.checkbox}>
-        <Checkbox
-           value={isChecked3}
-            onValueChange={setChecked3}
-            color={isChecked3 ? "#361A36" : undefined}
-          />
+        <CheckBox
+         onClick={()=>{
+          setChecked3(!isChecked3)
+         }}
+          isChecked={isChecked3}
+          leftText={"CheckBox"}
+
+     checkedImage = {<View style={{width: 100, height: 20}}><Text style = {{fontSize: 20, color: '#361A36'}}> ✓ </Text></View>}
+     unCheckedImage = {<View style = {{ width: 100, height: 20}}></View>}
+      />
         </View>
       </View>
       <TouchableOpacity onPress={() => navigation.navigate("Tabs")}>
@@ -115,11 +130,13 @@ confirmText: {
       marginLeft: 220
     },
     back: {
+      color: '#361A36',
       marginTop: 50,
       marginLeft: 30,
       fontFamily: "DoppioOne"
     },
     assignText: {
+      color: '#361A36',
       textAlign: 'center',
       marginTop: 50,
       fontFamily: "ZenDots",
@@ -169,6 +186,7 @@ confirmText: {
    
   },
   roomOneText: {
+    color: '#361A36',
       backgroundColor: "white",
       fontSize: 26,
       marginLeft: 28,       
@@ -180,6 +198,7 @@ confirmText: {
     marginTop: 10,
   },
   roomTwoText: {
+    color: '#361A36',
       backgroundColor: "white",
       fontSize: 26,
       marginLeft: 28,
@@ -192,6 +211,7 @@ confirmText: {
      
   },
   roomThreeText: {
+    color: '#361A36',
       backgroundColor: "white",
       fontSize: 26,
       marginLeft: 28,

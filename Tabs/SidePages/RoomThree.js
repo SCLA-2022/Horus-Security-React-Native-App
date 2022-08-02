@@ -7,6 +7,7 @@ import {
   Switch,
   SwitchComponent,
   Modal,
+  Image
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
@@ -86,10 +87,19 @@ export default function RoomOne({ navigation }) {
         
           <Text style={{alignSelf: 'center', color: '#361A36', fontSize: 40, fontWeight: "400", lineHeight: 48, marginTop: 30, fontFamily: 'ZenDots'}}>Room 3</Text>
         <View style={styles.hopefullyeverythingturnsoutfinebuteventheniwillpushforwardhopefullythingsturnoutalrightwithhardwork}>
+
+        
         <View style={styles.windowContainerOne}>
+
           <TouchableOpacity onPress={() => setModalVisible(!modalVisible)}>
-            <Text style={styles.windowOne}>Window 1</Text>
+            <Text style={styles.windowOne}>Window 1</Text>                  
           </TouchableOpacity>
+
+        
+          <TouchableOpacity style = {{marginLeft: 'auto', marginRight: 25}} onPresss = {() => console.log('three dots clicked')}>  
+            <Text style = {{fontSize: 30, color: '#361A36'}}> ... </Text>
+          </TouchableOpacity>
+
         </View>
 
         <View style = {{borderWidth:1, backgroundColor:'red', width: 377, alignSelf:'center', marginTop: 0}}></View>
@@ -98,6 +108,10 @@ export default function RoomOne({ navigation }) {
           <TouchableOpacity onPress={() => setModalVisible(!modalVisible)}>
             <Text style={styles.windowTwo}>Window 2</Text>
           </TouchableOpacity>
+
+          <TouchableOpacity style = {{marginLeft: 'auto', marginRight: 25}} onPresss = {() => console.log('three dots clicked')}>  
+            <Text style = {{fontSize: 30, color: '#361A36'}}> ... </Text>
+          </TouchableOpacity>
         </View>
 
         <View style = {{borderWidth:1, backgroundColor:'red', width: 377, alignSelf:'center', marginTop: 0}}></View>
@@ -105,6 +119,10 @@ export default function RoomOne({ navigation }) {
         <View style={styles.windowContainerThree}>
           <TouchableOpacity onPress={() => setModalVisible(!modalVisible)}>
             <Text style={styles.windowThree}>Window 3</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style = {{marginLeft: 'auto', marginRight: 25}} onPresss = {() => console.log('three dots clicked')}>  
+            <Text style = {{fontSize: 30, color: '#361A36'}}> ... </Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -199,24 +217,28 @@ const styles = StyleSheet.create({
     fontFamily: "Times New Roman",
   },
   back: {
+    color: '#361A36',
     marginTop: 0,
     marginLeft: 30,
     fontFamily: "DoppioOne"
 
   },
   windowOne: {
+    color: '#361A36',
     backgroundColor: "white",
     fontSize: 26,
     marginLeft: 28,
     fontFamily: "DoppioOne"
   },
   windowTwo: {
+    color: '#361A36',
     backgroundColor: "white",
     fontSize: 26,
     marginLeft: 28,
     fontFamily: "DoppioOne"
   },
   windowThree: {
+    color: '#361A36',
     backgroundColor: "white",
     fontSize: 26,
     marginLeft: 28,
@@ -227,18 +249,21 @@ const styles = StyleSheet.create({
     fontSize: 21,
     padding: 10,
     fontFamily: "Times New Roman",
+    flexDirection: 'row'
   },
   windowContainerTwo: {
     backgroundColor: "white",
     fontSize: 21,
     padding: 10,
     fontFamily: "Times New Roman",
+    flexDirection: 'row'
   },
   windowContainerThree: {
     backgroundColor: "white",
     fontSize: 21,
     padding: 10,
     fontFamily: "Times New Roman",
+    flexDirection: 'row'
   },
   body: {
     backgroundColor: "white",

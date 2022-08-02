@@ -82,13 +82,13 @@ const CustomTimePicker = (props) => {
 
         <View style={{ flexDirection: 'row', marginTop: 23, marginLeft: 36 }}>
           <View style={{ position: 'relative', borderWidth: 1, borderColor: '#361A36', height: 57, width: 74, justifyContent: 'center', borderRadius: 3 }}>
-            <Text style={{ alignSelf: 'center', fontFamily: 'ZenDots' }}> {showHours(date.hour())} </Text>
+            <Text style={{ alignSelf: 'center', fontFamily: 'ZenDots', color: '#361A36', }}> {showHours(date.hour())} </Text>
           </View>
 
           <Text style={{ alignSelf: 'center', fontSize: 30 }}> : </Text>
 
           <View style={{ position: 'relative', borderWidth: 1, borderColor: '#361A36', height: 57, width: 74, justifyContent: 'center', borderRadius: 3 }}>
-            <Text style={{ alignSelf: 'center', fontFamily: 'ZenDots' }}> {showMinutes(date.minute())} </Text>
+            <Text style={{ alignSelf: 'center', fontFamily: 'ZenDots', color: '#361A36', }}> {showMinutes(date.minute())} </Text>
           </View>
 
           <Modal
@@ -325,6 +325,7 @@ export default function Scheduling({ navigation }) {
 
 const styles = StyleSheet.create({
   ShieldText: {
+    color: '#361A36',
     fontFamily: "ZenDots",
     fontSize: 23,
     marginLeft: 30,

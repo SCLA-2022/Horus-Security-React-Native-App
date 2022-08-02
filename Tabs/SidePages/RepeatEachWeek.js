@@ -11,7 +11,8 @@ import {
 import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
 import React, { useState } from "react";
-import Checkbox from "expo-checkbox";
+// import Checkbox from "expo-checkbox";
+import CheckBox from 'react-native-check-box'
 
 export default function AssignRoom({ navigation }) {
   const [isChecked, setChecked] = useState(false);
@@ -47,12 +48,21 @@ export default function AssignRoom({ navigation }) {
 
         <Text style={styles.roomOneText}>Monday</Text>
  
-      <View style={styles.checkboxOne}>
-      <Checkbox
-          value={isChecked}
-          onValueChange={setChecked}
-          color={isChecked ? "#361A36" : undefined}
-        />
+      
+        <View style={styles.checkboxOne}>
+
+        <CheckBox
+         onClick={()=>{
+          setChecked(!isChecked)
+         }}
+          isChecked={isChecked}
+          leftText={"CheckBox"}
+
+     checkedImage = {<View style={{width: 100, height: 20}}><Text style = {{fontSize: 20, color: '#361A36'}}> ✓ </Text></View>}
+     unCheckedImage = {<View style = {{ width: 100, height: 20}}></View>}
+      />
+
+
       </View>
     </View>
 
@@ -63,11 +73,17 @@ export default function AssignRoom({ navigation }) {
         <Text style={styles.roomTwoText}>Tuesday</Text>
      
       <View style={styles.checkboxTwo}>
-      <Checkbox
-          value={isChecked2}
-          onValueChange={setChecked2}
-          color={isChecked2 ? "#361A36" : undefined}
-        />
+      <CheckBox
+    
+    onClick={()=>{
+     setChecked2(!isChecked2)
+    }}
+     isChecked={isChecked2}
+     leftText={"CheckBox"}
+
+     checkedImage = {<View style={{height: 20}}><Text style = {{fontSize: 20, color: '#361A36'}}> ✓ </Text></View>}
+     unCheckedImage = {<View style = {{ width: 100, height: 20}}></View>}
+ />
       </View>
     </View>
 
@@ -78,11 +94,17 @@ export default function AssignRoom({ navigation }) {
         <Text style={styles.roomThreeText}>Wednesday</Text>
     
       <View style={styles.checkboxThree}>
-      <Checkbox
-         value={isChecked3}
-          onValueChange={setChecked3}
-          color={isChecked3 ? "#361A36" : undefined}
-        />
+      <CheckBox
+    
+    onClick={()=>{
+     setChecked3(!isChecked3)
+    }}
+     isChecked={isChecked3}
+     leftText={"CheckBox"}
+
+     checkedImage = {<View style={{height: 20}}><Text style = {{fontSize: 20, color: '#361A36'}}> ✓ </Text></View>}
+     unCheckedImage = {<View style = {{ width: 100, height: 20}}></View>}
+ />
       </View>
     </View>
 
@@ -93,11 +115,17 @@ export default function AssignRoom({ navigation }) {
         <Text style={styles.roomTwoText}>Thursday</Text>
      
       <View style={styles.checkboxFour}>
-      <Checkbox
-          value={isChecked4}
-          onValueChange={setChecked4}
-          color={isChecked4 ? "#361A36" : undefined}
-        />
+      <CheckBox
+    
+    onClick={()=>{
+     setChecked4(!isChecked4)
+    }}
+     isChecked={isChecked4}
+     leftText={"CheckBox"}
+
+     checkedImage = {<View style={{height: 20}}><Text style = {{fontSize: 20, color: '#361A36'}}> ✓ </Text></View>}
+     unCheckedImage = {<View style = {{ width: 100, height: 20}}></View>}
+ />
       </View>
     </View>
 
@@ -108,11 +136,17 @@ export default function AssignRoom({ navigation }) {
         <Text style={styles.roomTwoText}>Friday</Text>
      
       <View style={styles.checkboxFive}>
-      <Checkbox
-          value={isChecked5}
-          onValueChange={setChecked5}
-          color={isChecked5 ? "#361A36" : undefined}
-        />
+      <CheckBox
+    
+    onClick={()=>{
+     setChecked5(!isChecked5)
+    }}
+     isChecked={isChecked5}
+     leftText={"CheckBox"}
+
+     checkedImage = {<View style={{height: 20}}><Text style = {{fontSize: 20, color: '#361A36'}}> ✓ </Text></View>}
+     unCheckedImage = {<View style = {{ width: 100, height: 20}}></View>}
+ />
       </View>
     </View>
 
@@ -123,11 +157,17 @@ export default function AssignRoom({ navigation }) {
         <Text style={styles.roomTwoText}>Saturday</Text>
      
       <View style={styles.checkboxSix}>
-      <Checkbox
-          value={isChecked6}
-          onValueChange={setChecked6}
-          color={isChecked6 ? "#361A36" : undefined}
-        />
+      <CheckBox
+    
+    onClick={()=>{
+     setChecked6(!isChecked6)
+    }}
+     isChecked={isChecked6}
+     leftText={"CheckBox"}
+
+     checkedImage = {<View style={{height: 20}}><Text style = {{fontSize: 20, color: '#361A36'}}> ✓ </Text></View>}
+     unCheckedImage = {<View style = {{ width: 100, height: 20}}></View>}
+ />
       </View>
     </View>
 
@@ -138,11 +178,17 @@ export default function AssignRoom({ navigation }) {
         <Text style={styles.roomTwoText}>Sunday</Text>
      
       <View style={styles.checkboxSeven}>
-      <Checkbox
-          value={isChecked7}
-          onValueChange={setChecked7}
-          color={isChecked7 ? "#361A36" : undefined}
-        />
+      <CheckBox
+    
+    onClick={()=>{
+     setChecked7(!isChecked7)
+    }}
+     isChecked={isChecked7}
+     leftText={"CheckBox"}
+
+     checkedImage = {<View style={{height: 20,}}><Text style = {{fontSize: 20, color: '#361A36'}}> ✓ </Text></View>}
+     unCheckedImage = {<View style = {{ width: 100, height: 20}}></View>}
+ />
       </View>
     </View>
 
@@ -204,7 +250,7 @@ color: "white",
   },
   checkboxSeven: {
     marginTop: 10,
-    marginLeft: 219
+    marginLeft: 219,
   },
   back: {
     marginTop: 50,
@@ -212,6 +258,7 @@ color: "white",
     fontFamily: "DoppioOne"
   },
   assignText: {
+    color: '#361A36',
     textAlign: 'center',
     marginTop: 50,
     fontFamily: "ZenDots",
@@ -261,6 +308,7 @@ roomOneContainer: {
  
 },
 roomOneText: {
+  color: '#361A36',
     backgroundColor: "white",
     fontSize: 26,
     marginLeft: 28,       
@@ -272,6 +320,7 @@ roomTwoContainer: {
   marginTop: 10,
 },
 roomTwoText: {
+  color: '#361A36',
     backgroundColor: "white",
     fontSize: 26,
     marginLeft: 28,
@@ -284,6 +333,7 @@ roomThreeContainer: {
    
 },
 roomThreeText: {
+  color: '#361A36',
     backgroundColor: "white",
     fontSize: 26,
     marginLeft: 28,

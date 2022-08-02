@@ -31,7 +31,7 @@ export default function AddDevice({ navigation }) {
       <View style = {{borderWidth:1, backgroundColor:'red', width: 377, alignSelf:'center', marginTop: 10}}></View>
 
       <View style={styles.roomThreeContainer}>
-        <TouchableOpacity onPress={() => navigation.navigate("AssignRoom")}>
+        <TouchableOpacity onPress={navigation.navigate("AssignRoom")}>
         <View style={styles.connectView}>
           <Text style={styles.roomThreeText}>New Window</Text>
           <Text style={styles.textConnect}>Connect</Text>
@@ -46,6 +46,7 @@ export default function AddDevice({ navigation }) {
 
 const styles = StyleSheet.create({
         bluetooth: {
+          color: '#361A36',
         fontFamily: "ZenDots",
         alignSelf: 'center',
         marginTop: 100,
@@ -54,6 +55,7 @@ const styles = StyleSheet.create({
         allButtonContainer: {
         },
         textConnect: {
+          color: '#361A36',
             fontFamily: "DoppioOne",
             marginTop: 10,
             marginLeft: 120
@@ -90,12 +92,14 @@ const styles = StyleSheet.create({
             fontFamily: "DoppioOne"
         },
         roomThreeContainer: {
+           
             backgroundColor: "white",
             flexDirection: "row",
             marginTop: 10,
            
         },
         roomThreeText: {
+          color: '#361A36',
             backgroundColor: "white",
             fontSize: 26,
             marginLeft: 28,

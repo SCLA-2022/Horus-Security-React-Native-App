@@ -39,7 +39,7 @@ export default function Windows({navigation}) {
 
   const turnOn = () => {
     console.log("turning motor")
-    axios.get('http://172.20.10.4/motor?cw=on').then((res) => {
+    axios.get('http://172.20.10.4/Command=backward').then((res) => {
       console.log(res)
     }).catch((err) => {
       console.log(err)
@@ -47,7 +47,7 @@ export default function Windows({navigation}) {
   }
   const turnOff = () => {
     console.log("turning on led")
-    axios.get('http://172.20.10.4/motor?ccw=on').then((res) => {
+    axios.get('http://172.20.10.4/Command=forward').then((res) => {
       console.log(res)
     }).catch((err) => {
       console.log(err)
@@ -177,7 +177,8 @@ const styles = StyleSheet.create({
         backgroundColor: "white",
         fontSize: 26,
         marginLeft: 28,       
-        fontFamily: "DoppioOne"
+        fontFamily: "DoppioOne",
+        color: '#361A36',
     },
     roomTwoContainer: {
       backgroundColor: "white",
@@ -188,7 +189,8 @@ const styles = StyleSheet.create({
         backgroundColor: "white",
         fontSize: 26,
         marginLeft: 28,
-        fontFamily: "DoppioOne"
+        fontFamily: "DoppioOne",
+        color: '#361A36',
     },
     roomThreeContainer: {
         backgroundColor: "white",
@@ -200,11 +202,13 @@ const styles = StyleSheet.create({
         backgroundColor: "white",
         fontSize: 26,
         marginLeft: 28,
+        color: '#361A36',
         fontFamily: "DoppioOne"
     },
     greenButton: {
         
         borderWidth: 3,
+        borderColor:'#361A36',
         backgroundColor: 'white',
         width: 269,
         height: 67,
@@ -216,7 +220,8 @@ const styles = StyleSheet.create({
         padding: 0,
         top: 20,
         textAlign: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        color: '#361A36',
     },
     redButton: {
         backgroundColor: "#F37C7C",
