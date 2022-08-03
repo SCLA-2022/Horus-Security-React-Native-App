@@ -31,7 +31,7 @@ export default function AddDevice({ navigation }) {
       <View style = {{borderWidth:1, backgroundColor:'red', width: 377, alignSelf:'center', marginTop: 10}}></View>
 
       <View style={styles.roomThreeContainer}>
-        <TouchableOpacity onPress={navigation.navigate("AssignRoom")}>
+        <TouchableOpacity onPress={() => navigation.navigate("AssignRoom")}>
         <View style={styles.connectView}>
           <Text style={styles.roomThreeText}>New Window</Text>
           <Text style={styles.textConnect}>Connect</Text>

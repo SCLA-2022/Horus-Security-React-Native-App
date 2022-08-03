@@ -26,7 +26,7 @@ const Stacks = () => {
       headerShown: false
     }}>
       {/* <Stack.Screen name = "Login" component = { LoginScreen }/> */}
-      <Stack.Screen name = "home"  component = { Tabs }/>
+      <Stack.Screen name = "Tabs"  component = { Tabs }/>
       <Stack.Screen name = "RoomOne" component = { RoomOne }/>
       <Stack.Screen name = "RoomTwo" component = {RoomTwo}/>
       <Stack.Screen name = "RoomThree" component = {RoomThree}/>

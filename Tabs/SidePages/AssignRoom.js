@@ -8,6 +8,7 @@ import {
     SwitchComponent,
     Modal,
     Pressable,
+    Image
   } from "react-native";
   import { StatusBar } from "expo-status-bar";
   import { NavigationContainer } from "@react-navigation/native";
@@ -27,68 +28,81 @@ import {
     return (
       <>
         <View style={styles.body}>
+
           <View style={styles.backButton}>
+
             <TouchableOpacity onPress={() => navigation.goBack()}>
-              <Text style={styles.back}> Back </Text>
+              <Image style = {{width: 30, height: 30, marginLeft: 30, backgroundColor: 'red', marginTop: 40}} resizeMode="stretch" source = {require('../../assets/Icons/left-arrow.png')}/>
             </TouchableOpacity>
+
             <Text style={styles.assignText}>Assign to Room</Text>
-            <View style={styles.roomOneContainer}>
 
-          <Text style={styles.roomOneText}>Room 1</Text>
+            <TouchableOpacity onPress={() => setChecked(!isChecked)} style={styles.roomOneContainer}>
+
+         
+              <Text style={styles.roomOneText}>Room 1</Text>
    
-        <View style={styles.checkboxThree}>
-        <CheckBox
-         onClick={()=>{
-          setChecked(!isChecked)
-         }}
-          isChecked={isChecked}
-          leftText={"CheckBox"}
+              <View style={styles.checkboxThree}>
 
-     checkedImage = {<View style={{width: 30, height: "auto"}}><Text style = {{fontSize: 20, color: '#361A36'}}> ✓ </Text></View>}
-     unCheckedImage = {<View style = {{ width: 50, height: 20}}></View>}
-      />
-        </View>
-      </View>
+                <CheckBox
+                  onClick={()=>{
+                    setChecked(!isChecked)
+                  }}
+                  isChecked={isChecked}
+                  leftText={"CheckBox"}
+                  checkedImage = {<View style={{width: 30, height: "auto"}}><Text style = {{fontSize: 20, color: '#361A36'}}> ✓ </Text></View>}
+                  unCheckedImage = {<View style = {{ width: 50, height: 20}}></View>}
+                />
 
-      <View style = {{borderWidth:1, backgroundColor:'red', width: 377, alignSelf:'center', marginTop: 10}}></View>
-
-      <View style={styles.roomTwoContainer}>
+              </View>
       
-          <Text style={styles.roomTwoText}>Room 2</Text>
-       
-        <View style={styles.checkboxTwo}>
-        <CheckBox
-         onClick={()=>{
-          setChecked2(!isChecked2)
-         }}
-          isChecked={isChecked2}
-          leftText={"CheckBox"}
 
-     checkedImage = {<View style={{width: 100, height: 20}}><Text style = {{fontSize: 20, color: '#361A36'}}> ✓ </Text></View>}
-     unCheckedImage = {<View style = {{ width: 100, height: 20}}></View>}
-      />
-        </View>
-      </View>
+            </TouchableOpacity>
 
-      <View style = {{borderWidth:1, backgroundColor:'red', width: 377, alignSelf:'center', marginTop: 10}}></View>
+            <View style = {{borderWidth:1, width: 377, alignSelf:'center', marginTop: 10}}></View>
 
-      <View style={styles.roomThreeContainer}>
-       
-          <Text style={styles.roomThreeText}>Room 3</Text>
+            <TouchableOpacity onPress={() => setChecked2(!isChecked2)} style={styles.roomTwoContainer}>
       
-        <View style={styles.checkbox}>
-        <CheckBox
-         onClick={()=>{
-          setChecked3(!isChecked3)
-         }}
-          isChecked={isChecked3}
-          leftText={"CheckBox"}
+              <Text style={styles.roomTwoText}>Room 2</Text>
+       
+              <View style={styles.checkboxTwo}>
+                  
+                <CheckBox
+                onClick={()=>{
+                  setChecked2(!isChecked2)
+                }}
+                  isChecked={isChecked2}
+                  leftText={"CheckBox"}
+                  checkedImage = {<View style={{width: 100, height: 20}}><Text style = {{fontSize: 20, color: '#361A36'}}> ✓ </Text></View>}
+                  unCheckedImage = {<View style = {{ width: 100, height: 20}}></View>}
+                />
 
-     checkedImage = {<View style={{width: 100, height: 20}}><Text style = {{fontSize: 20, color: '#361A36'}}> ✓ </Text></View>}
-     unCheckedImage = {<View style = {{ width: 100, height: 20}}></View>}
-      />
-        </View>
-      </View>
+              </View>
+
+            </TouchableOpacity>
+
+            <View style = {{borderWidth:1, backgroundColor:'red', width: 377, alignSelf:'center', marginTop: 10}}></View>
+
+            <TouchableOpacity onPress={() => setChecked3(!isChecked3)} style={styles.roomThreeContainer}>
+       
+              <Text style={styles.roomThreeText}>Room 3</Text>
+      
+              <View style={styles.checkbox}>
+
+                <CheckBox
+                onClick={()=>{
+                  setChecked3(!isChecked3)
+                }}
+                  isChecked={isChecked3}
+                  leftText={"CheckBox"}
+
+                  checkedImage = {<View style={{width: 100, height: 20}}><Text style = {{fontSize: 20, color: '#361A36'}}> ✓ </Text></View>}
+                  unCheckedImage = {<View style = {{ width: 100, height: 20}}></View>}
+                />
+
+              </View>
+
+            </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate("Tabs")}>
         <View style={styles.confirmButton}>
           <Text style={styles.confirmText}> Confirm </Text>
