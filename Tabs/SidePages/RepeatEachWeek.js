@@ -7,6 +7,7 @@ import {
   Switch,
   SwitchComponent,
   Modal,
+  Image
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
@@ -41,18 +42,18 @@ export default function AssignRoom({ navigation }) {
       <View style={styles.body}>
         <View style={styles.backButton}>
           <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Text style={styles.back}> Back </Text>
+          <Image style = {{width: 30, height: 30, marginLeft: 30, marginTop: 40}} resizeMode="stretch" source = {require('../../assets/Icons/left-arrow.png')}/>
           </TouchableOpacity>
           <Text style={styles.assignText}>Repeat</Text>
-          <View style={styles.roomOneContainer}>
-
+          <TouchableOpacity onPress={() => setChecked(!isChecked)} style={styles.roomOneContainer}>
+      
         <Text style={styles.roomOneText}>Monday</Text>
  
       
         <View style={styles.checkboxOne}>
 
-        <CheckBox
-         onClick={()=>{
+          <CheckBox
+          onClick={()=>{
           setChecked(!isChecked)
          }}
           isChecked={isChecked}
@@ -64,11 +65,11 @@ export default function AssignRoom({ navigation }) {
 
 
       </View>
-    </View>
+    </TouchableOpacity>
 
     <View style = {{borderWidth:1, backgroundColor:'red', width: 377, alignSelf:'center', marginTop: 10}}></View>
 
-    <View style={styles.roomTwoContainer}>
+    <TouchableOpacity onPress={() => setChecked2(!isChecked2)} style={styles.roomTwoContainer}>
     
         <Text style={styles.roomTwoText}>Tuesday</Text>
      
@@ -85,11 +86,11 @@ export default function AssignRoom({ navigation }) {
      unCheckedImage = {<View style = {{ width: 100, height: 20}}></View>}
  />
       </View>
-    </View>
+    </TouchableOpacity>
 
     <View style = {{borderWidth:1, backgroundColor:'red', width: 377, alignSelf:'center', marginTop: 10}}></View>
 
-    <View style={styles.roomThreeContainer}>
+    <TouchableOpacity onPress={() => setChecked3(!isChecked3)} style={styles.roomThreeContainer}>
      
         <Text style={styles.roomThreeText}>Wednesday</Text>
     
@@ -106,11 +107,11 @@ export default function AssignRoom({ navigation }) {
      unCheckedImage = {<View style = {{ width: 100, height: 20}}></View>}
  />
       </View>
-    </View>
+    </TouchableOpacity>
 
     <View style = {{borderWidth:1, backgroundColor:'red', width: 377, alignSelf:'center', marginTop: 10}}></View>
 
-    <View style={styles.roomTwoContainer}>
+    <TouchableOpacity onPress={() => setChecked4(!isChecked4)} style={styles.roomTwoContainer}>
     
         <Text style={styles.roomTwoText}>Thursday</Text>
      
@@ -127,11 +128,11 @@ export default function AssignRoom({ navigation }) {
      unCheckedImage = {<View style = {{ width: 100, height: 20}}></View>}
  />
       </View>
-    </View>
+    </TouchableOpacity>
 
     <View style = {{borderWidth:1, backgroundColor:'red', width: 377, alignSelf:'center', marginTop: 10}}></View>
 
-    <View style={styles.roomTwoContainer}>
+    <TouchableOpacity onPress={() => setChecked5(!isChecked5)} style={styles.roomTwoContainer}>
     
         <Text style={styles.roomTwoText}>Friday</Text>
      
@@ -148,11 +149,11 @@ export default function AssignRoom({ navigation }) {
      unCheckedImage = {<View style = {{ width: 100, height: 20}}></View>}
  />
       </View>
-    </View>
+    </TouchableOpacity>
 
     <View style = {{borderWidth:1, backgroundColor:'red', width: 377, alignSelf:'center', marginTop: 10}}></View>
 
-    <View style={styles.roomTwoContainer}>
+    <TouchableOpacity onPress={() => setChecked6(!isChecked6)} style={styles.roomTwoContainer}>
     
         <Text style={styles.roomTwoText}>Saturday</Text>
      
@@ -169,11 +170,11 @@ export default function AssignRoom({ navigation }) {
      unCheckedImage = {<View style = {{ width: 100, height: 20}}></View>}
  />
       </View>
-    </View>
+    </TouchableOpacity>
 
     <View style = {{borderWidth:1, backgroundColor:'red', width: 377, alignSelf:'center', marginTop: 10}}></View>
 
-    <View style={styles.roomTwoContainer}>
+    <TouchableOpacity onPress={() => setChecked7(!isChecked7)} style={styles.roomTwoContainer}>
     
         <Text style={styles.roomTwoText}>Sunday</Text>
      
@@ -190,7 +191,7 @@ export default function AssignRoom({ navigation }) {
      unCheckedImage = {<View style = {{ width: 100, height: 20}}></View>}
  />
       </View>
-    </View>
+    </TouchableOpacity>
 
     <View style = {{borderWidth:1, backgroundColor:'red', width: 377, alignSelf:'center', marginTop: 10}}></View>
     <TouchableOpacity onPress={() => navigation.navigate("Tabs")}>

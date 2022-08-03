@@ -39,7 +39,7 @@ export default function Windows({navigation}) {
 
   const turnOn = () => {
     console.log("turning motor")
-    axios.get('http://172.20.10.4/Command=backward').then((res) => {
+    axios.get('http://192.168.1.143/Command=forward').then((res) => {
       console.log(res)
     }).catch((err) => {
       console.log(err)
@@ -47,7 +47,7 @@ export default function Windows({navigation}) {
   }
   const turnOff = () => {
     console.log("turning on led")
-    axios.get('http://172.20.10.4/Command=forward').then((res) => {
+    axios.get('http://192.168.1.143/Command=backward').then((res) => {
       console.log(res)
     }).catch((err) => {
       console.log(err)

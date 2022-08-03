@@ -81,7 +81,7 @@ export default function RoomOne({ navigation }) {
       <View style={styles.body}>
         <View style={styles.backButton}>
           <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Text style={styles.back}> Back </Text>
+          <Image style = {{width: 30, height: 30, marginLeft: 30, marginTop: 0}} resizeMode="stretch" source = {require('../../assets/Icons/left-arrow.png')}/>
           </TouchableOpacity>
         </View>
         

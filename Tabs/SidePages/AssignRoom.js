@@ -32,7 +32,7 @@ import {
           <View style={styles.backButton}>
 
             <TouchableOpacity onPress={() => navigation.goBack()}>
-              <Image style = {{width: 30, height: 30, marginLeft: 30, backgroundColor: 'red', marginTop: 40}} resizeMode="stretch" source = {require('../../assets/Icons/left-arrow.png')}/>
+              <Image style = {{width: 30, height: 30, marginLeft: 30, marginTop: 40}} resizeMode="stretch" source = {require('../../assets/Icons/left-arrow.png')}/>
             </TouchableOpacity>
 
             <Text style={styles.assignText}>Assign to Room</Text>
