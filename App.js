@@ -7,18 +7,50 @@ import Scheduling from "./Tabs/Scheduling";
 import AddDevice from "./Tabs/AddDevice";
 import { StyleSheet, Text, View } from "react-native";
 import Test from "./Tabs/Test";
+import Tabs from "./Tabs/Navigation/Tabs";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import RoomOne from "./Tabs/SidePages/RoomOne";
+import RoomTwo from "./Tabs/SidePages/RoomTwo";
+import RoomThree from "./Tabs/SidePages/RoomThree";
+import RepeatEachWeek from "./Tabs/SidePages/RepeatEachWeek";
+import LoginScreen from "./Tabs/LoginScreen";
+import AssignRoom from "./Tabs/SidePages/AssignRoom";
 
-const Tabs = createBottomTabNavigator();
+import { useFonts } from "expo-font";
+
+const Stack = createNativeStackNavigator();
+
+const Stacks = () => {
+  return(
+    <Stack.Navigator screenOptions={{
+      headerShown: false
+    }}>
+      {/* <Stack.Screen name = "Login" component = { LoginScreen }/> */}
+      <Stack.Screen name = "Tabs"  component = { Tabs }/>
+      <Stack.Screen name = "RoomOne" component = { RoomOne }/>
+      <Stack.Screen name = "RoomTwo" component = {RoomTwo}/>
+      <Stack.Screen name = "RoomThree" component = {RoomThree}/>
+      <Stack.Screen name = "RepeatEachWeek" component = {RepeatEachWeek}/>
+      <Stack.Screen name = "AssignRoom" component = {AssignRoom}/>
+    </Stack.Navigator>
+  )
+}
+
 
 export default function App() {
+
+  const [loaded] = useFonts({
+    DoppioOne: require('./assets/fonts/DoppioOne-Regular.ttf'),
+    ZenDots: require('./assets/fonts/ZenDots-Regular.ttf')
+  })
+
+
+  if(!loaded) {
+    return null;
+  }
   return (
     <NavigationContainer>
-      <Tabs.Navigator>
-        <Tabs.Screen name="Windows" component={Windows} />
-        <Tabs.Screen name="Scheduling" component={Scheduling} />
-        <Tabs.Screen name="Add a new Device" component={AddDevice} />
-        <Tabs.Screen name="Test" component={Test}/>
-      </Tabs.Navigator>
+      <Stacks/>
     </NavigationContainer>
   );
 }

@@ -1,129 +1,370 @@
-import { StyleSheet, Text, View, FlatList, TouchableOpacity, Button, Platform } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  TouchableOpacity,
+  Button,
+  Platform,
+  Switch,
+  Modal,
+  Image,
+} from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
-import DropDownPicker from 'react-native-dropdown-picker';
-import DateTimePicker from '@react-native-community/datetimepicker'
-import React, { useState } from 'react'
+import DropDownPicker from "react-native-dropdown-picker";
+import DateTimePicker from "@react-native-community/datetimepicker";
+import React, { useState } from "react";
+import RepeatEachWeek from "./SidePages/RepeatEachWeek";
+import { render } from "react-dom";
+import moment from "moment";
+
+const CustomTimePicker = (props) => {
+  const { textStyle, defaultDate } = props;
+
+  const [date, setDate] = React.useState(defaultDate);
+  const [show, setShow] = React.useState(false);
+
+  const [pressed, setPressed] = React.useState(false);
+  const [pressed2, setPressed2] = React.useState(false);
+
+  const onChange = (selectedTime) => {
+    selectedTime = moment(selectedTime)
+
+    setDate(selectedTime)
+
+  }
+
+  const onCancel = () => {
+    // setDate(moment(defaultDate));
+    setShow(false);
+  }
+  const onDone = () => {
+    // props.onDateChange(date)
+    setShow(false);
+  }
+
+  const showHours = (hours) => {
+    if (hours == 0) {
+      return `12`
+    } else if (hours > 12) {
+      return hours - 12
+    } else {
+      return hours
+    }
+  }
+
+  const showMinutes = (minutes) => {
+    if (minutes < 10) {
+      return `0${minutes}`
+    } else return minutes
+  }
+
+  const changeColor = (hours) => {
+    hours = moment(hours).hour()
 
 
-export default function Scheduling() {
-    const [open, setOpen] = useState(false);
-    const [value, setValue] = useState(null);
-    const [items, setItems] = useState([
-    {label: 'Window 1', value: 'window1'},
-    {label: 'Window 2', value: 'window2'},
-    {label: 'Window 3', value: 'window3'},
-    {label: 'Window 4', value: 'window4'},
-    {label: 'Window 5', value: 'window5'},
-    {label: 'All Windows', value: 'allwindows'}
+    if (hours > 12) {
+      setPressed(false)
+      setPressed2(true)
+    } else {
+      setPressed2(false)
+      setPressed(true)
+    }
+  }
+
+  return (
+    <>
+      <TouchableOpacity
+        activeOpacity={0}
+        onPress={() => setShow(true)}>
+
+
+        <View style={{ flexDirection: 'row', marginTop: 23, marginLeft: 36 }}>
+          <View style={{ position: 'relative', borderWidth: 1, borderColor: '#361A36', height: 57, width: 74, justifyContent: 'center', borderRadius: 3 }}>
+            <Text style={{ alignSelf: 'center', fontFamily: 'ZenDots', color: '#361A36', }}> {showHours(date.hour())} </Text>
+          </View>
+
+          <Text style={{ alignSelf: 'center', fontSize: 30 }}> : </Text>
+
+          <View style={{ position: 'relative', borderWidth: 1, borderColor: '#361A36', height: 57, width: 74, justifyContent: 'center', borderRadius: 3 }}>
+            <Text style={{ alignSelf: 'center', fontFamily: 'ZenDots', color: '#361A36', }}> {showMinutes(date.minute())} </Text>
+          </View>
+
+          <Modal
+            transparent={true}
+            animationType="slide"
+            visible={show}
+            supportedOrientations={['portrait']}
+            onRequestClose={() => setShow(false)}>
+
+            <View style={{ flex: 1 }}>
+
+              <TouchableOpacity
+                style={{
+                  flex: 1,
+                  alignItems: 'flex-end',
+                  flexDirection: 'row',
+                }}
+                activeOpacity={1}
+                visible={show}
+                onPress={() => setShow(false)}>
+
+                <TouchableOpacity
+                  underlayColor={'#FFFFFF'}
+                  style={{
+                    flex: 1,
+                    borderTopColor: '#E9E9E9',
+                    borderTopWidth: 1,
+                  }}
+                  onPress={() => console.log("datepicker clicked")}>
+
+                  <View style={{
+                    backgroundColor: "#FFFFFF",
+                    height: 256,
+                    overflow: 'hidden',
+                  }}>
+
+                    <View style={{ marginTop: 20 }}>
+                      <DateTimePicker
+                        textColor = {'#361A36'}
+                        display={Platform.OS === 'ios' ? 'spinner' : 'default'}
+
+                        value={new Date(date)}
+                        mode="time"
+
+                        onChange={(e, newTime) => {
+                          onChange(newTime)
+                          changeColor(newTime)
+                        }
+                        }
+                      />
+                    </View>
+
+                    <TouchableOpacity
+                      underlayColor={'transparent'}
+                      onPress={onCancel}
+                      style={[styles.btnText, styles.btnCancel]}>
+                      <Text> Cancel </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      underlayColor={'transparent'}
+                      onPress={onDone}
+                      style={[styles.btnText, styles.btnDone]}>
+                      <Text> Done </Text>
+                    </TouchableOpacity>
+
+                  </View>
+
+                </TouchableOpacity>
+              </TouchableOpacity>
+            </View>
+          </Modal>
+        </View>
+      </TouchableOpacity>
+
+      <View style={{ flexDirection: 'row', marginTop: 27, marginLeft: 36 }}>
+
+        <TouchableOpacity onPress={() => {
+          setPressed(!pressed)
+          setPressed2(false)
+
+          if (date.hour() > 12) {
+            setDate(date.subtract(12, 'hours'))
+          }
+        }}
+          style={{ position: 'relative', borderWidth: 1, borderColor: '#361A36', height: 36, width: 75, justifyContent: 'center', borderRadius: 3, backgroundColor: pressed ? '#361A36' : 'white', marginRight: 13 }}>
+
+          <Text style={[{ alignSelf: 'center' }, , { color: pressed ? 'white' : 'black', fontSize: 15, fontWeight: '400', lineHeight: 18, fontFamily: 'ZenDots' }]}> am </Text>
+
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => {
+          setPressed2(!pressed2)
+          setPressed(false)
+
+          if (date.hour() < 12) {
+            setDate(date.add(12, 'hours'))
+          }
+        }}
+          style={{ position: 'relative', borderWidth: 1, borderColor: '#361A36', height: 36, width: 75, justifyContent: 'center', borderRadius: 3, backgroundColor: pressed2 ? '#361A36' : 'white' }}>
+
+          <Text style={[{ alignSelf: 'center' }, { color: pressed2 ? 'white' : 'black', fontSize: 15, fontWeight: '400', lineHeight: 18, fontFamily: 'ZenDots' }]}> pm </Text>
+
+        </TouchableOpacity>
+
+
+
+      </View>
+    </>
+
+  )
+}
+
+export default function Scheduling({ navigation }) {
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(null);
+  const [items, setItems] = useState([
+    { label: "All Rooms", value: "window1" },
+    { label: "Room 1", value: "window2" },
+    { label: "Room 2", value: "window3" },
+    // { label: "Room 3", value: "window4" },
   ]);
 
   const [date, setDate] = useState(new Date());
-  const [mode, setMode] = useState('Date');
+  const [mode, setMode] = useState("Date");
   const [show, setShow] = useState(false);
-  const [text, setText] = useState('Empty');
+  const [text, setText] = useState("");
+  const [time, setTime] = useState({ hours: '', minutes: '' });
 
-  const onChange = (event, selectedDate) => {
-      const currentDate = selectedDate || date;
-      setShow(Platform.OS === 'ios');
-      setDate(currentDate);
 
-      let tempDate = new Date(currentDate);
-      let fDate = tempDate.getDate() + '/' + (tempDate.getMonth() + 1) + '/' + tempDate.getFullYear();
-      let fTime = 'Hours: ' + tempDate.getHours() + ' | Minutes: ' + tempDate.getMinutes();
-      setText(fDate + '\n' + fTime)
+  const [toggle, setToggle] = useState({ toggle: true })
+  const textValue = toggle ? "AM" : "PM";
+  const buttonBg = toggle ? "#361A36" : "#FFFFFF"
+  const textColor = toggle ? "#FFFFFF" : "#361A36"
 
-      console.log(fDate + ' (' + fTime + ')')
-  }
 
-  const showMode = (currentMode) => {
-      setShow(true);
-      setMode(currentMode)
-  }
+  const [isEnabled, setIsEnabled] = useState(false);
+  const [activeSwitch, setActiveSwitch] = useState(null);
 
-    return (
-        <>
+  const [isEnabled2, setIsEnabled2] = useState(false);
+  const [activeSwitch2, setActiveSwitch2] = useState(null);
+
+
+  return (
+    <View style={styles.Body}>
+
+
+      <View style = {{ display: 'flex',justifyContent: 'center', flexDirection: 'row',  marginTop: 80}}>
+        <Text style={{ alignSelf: 'center', fontSize: 25,lineHeight: 36, fontWeight: '400', color: '#361A36', fontFamily: "ZenDots", marginLeft: 20 }}> Shield Schedule </Text>
+        <View style={{right: 10}}>
         <DropDownPicker
-      open={open}
-      value={value}
-      items={items}
-      setOpen={setOpen}
-      setValue={setValue}
-      setItems={setItems}
-    />
+          style = {{backgroundColor: '#361A36', width: 57, height: 48, alignSelf: 'center'}}
+          ArrowDownIconComponent = {({style}) => <Image  resizeMode="stretch" source = {require('../assets/Icons/Arrow.png')} style={{ width: 15, height: 8, left: -11}} />}
+          containerStyle = {{width: 100, borderRadius: 20,}}
+          
+          placeholder=""
+          open={open}
+          value={null}
+          items={items}
+          setOpen={setOpen}
+          setValue={setValue}
+          setItems={setItems}
+      />
+      </View>
+      </View>
+      <Text style={styles.ShieldText}> Open Shields </Text>
 
-        <View style={styles.container}>
-        <Text style={styles.Stuff}>{text}</Text>
-        <View >
-            <Button title='DatePicker' onPress={() => showMode('date')}/>
-        </View>
+      {/* This view is the parent and everything within it is the child */}
+      <View style={{ flexDirection: 'row' }}>
+
+        {/* Container for the custom time picker for flex direction row to work */}
         <View>
-            <Button title='TimePicker' onPress={() => showMode('time')}/>
+          <CustomTimePicker
+            defaultDate={moment()}
+          />
         </View>
 
-        
-            {show && (
-            <DateTimePicker
-            testID='dateTimePicker'
-            value={date}
-            mode={mode}
-            is24Hour={false}
-            display='default'
-            onChange={onChange}
-            />)}
+        <View>
+          <Switch
+            marginTop={35}
+            marginLeft={82}
+            trackColor={{ false: "#767577", true: "#361A36" }}
+            thumbColor={isEnabled ? "#fffff" : "#fffff"}
+            ios_backgroundColor="#E3E3E3"
+            value={isEnabled}
+            onValueChange={setIsEnabled}
+          />
 
-        
+          <View style={styles.repeat}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("RepeatEachWeek")}>
+              <Text style={styles.repeatEveryText}>Repeat Every</Text>
+            </TouchableOpacity>
+          </View>
 
-        <StatusBar style="auto" />
         </View>
-    </>
-    ) 
+      </View>
 
 
+      <Text style = {styles.ShieldText}> Close Shields </Text>
+      <View style={{ flexDirection: 'row' }}>
 
-
-
-  
-
-    
-
-    /**return (
-        <View style={styles.container}>
-        <Text style={styles.Stuff}>{text}</Text>
-        <View style={styles.PickButton}>
-            <Button title='DatePicker' onPress={() => showMode('date')}/>
-        </View>
-        <View style={styles.PickButton}>
-            <Button title='TimePicker' onPress={() => showMode('time')}/>
+        {/* Container for the custom time picker for flex direction row to work */}
+        <View>
+          <CustomTimePicker
+            defaultDate={moment()}
+          />
         </View>
 
-        
-            <DateTimePicker
-            testID='dateTimePicker'
-            value={date}
-            mode={mode}
-            is24Hour={true}
-            display='default'
-            onChange={onChange}
-            />
+        <View>
+          <Switch
+            marginTop={35}
+            marginLeft={82}
+            trackColor={{ false: "#767577", true: "#361A36" }}
+            thumbColor={isEnabled2 ? "#fffff" : "#fffff"}
+            ios_backgroundColor="#E3E3E3"
+            value={isEnabled2}
+            onValueChange={setIsEnabled2}
+          />
 
-        <StatusBar style="auto" />
+          <View style={styles.repeat}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("RepeatEachWeek")}>
+              <Text style={styles.repeatEveryText}>Repeat Every</Text>
+            </TouchableOpacity>
+          </View>
+
         </View>
-    )
-/* */
+      </View>
 
 
+    </View>
+  );
 }
-const styles = StyleSheet.create({
-    ScheduleContainer: {
-      flex: 1,
-      fontSize: 20,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
 
-    WindowFlatList: {
-        flex: 1,
-    }
-})
+const styles = StyleSheet.create({
+  ShieldText: {
+    color: '#361A36',
+    fontFamily: "ZenDots",
+    fontSize: 23,
+    marginLeft: 30,
+    marginTop: 84
+  },
+  repeat: {
+    justifyContent: 'center',
+    backgroundColor: "#361A36",
+    marginLeft: 35,
+    marginTop: 39,
+    width: 130,
+    height: 36,
+    borderRadius: 5,
+  },
+  repeatEveryText: {
+    fontFamily: 'ZenDots',
+    fontSize: 10,
+    fontWeight: '400',
+    lineHeight: 14,
+    textAlign: 'center',
+    color: 'white',
+  },
+  Body: {
+    backgroundColor: "white",
+    flex: 1
+  },
+  btnText: {
+    position: 'absolute',
+    top: 0,
+    height: 42,
+    paddingHorizontal: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  btnCancel: {
+    left: 0,
+  },
+  btnDone: {
+    right: 0,
+  }
+});
