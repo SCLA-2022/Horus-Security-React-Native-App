@@ -135,7 +135,7 @@ export default function Windows({navigation}) {
       <View style={styles.openShield}>
         <TouchableOpacity onPress={() => {turnOn()}}>
         <View style={styles.greenButton}>
-          <Text style={styles.openText}>Open all Shields</Text>
+          <Text style={styles.openText}>Open All Shields</Text>
         </View>
         </TouchableOpacity>
       </View>
@@ -144,7 +144,7 @@ export default function Windows({navigation}) {
         
         <TouchableOpacity onPress={() => {turnOff()}}>
         <View style={styles.redButton}>
-          <Text style={styles.closeText}>Close all Shields</Text>
+          <Text style={styles.closeText}>Close All Shields</Text>
         </View>
         </TouchableOpacity>
       </View>

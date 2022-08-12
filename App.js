@@ -5,7 +5,7 @@ import { Ionicons } from "@expo/vector-icons";
 import Windows from "./Tabs/Windows"
 import Scheduling from "./Tabs/Scheduling";
 import AddDevice from "./Tabs/AddDevice";
-import { StyleSheet, Text, View } from "react-native";
+import { LogBox, StyleSheet, Text, View } from "react-native";
 import Test from "./Tabs/Test";
 import Tabs from "./Tabs/Navigation/Tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -15,8 +15,8 @@ import RoomThree from "./Tabs/SidePages/RoomThree";
 import RepeatEachWeek from "./Tabs/SidePages/RepeatEachWeek";
 import LoginScreen from "./Tabs/LoginScreen";
 import AssignRoom from "./Tabs/SidePages/AssignRoom";
-
 import { useFonts } from "expo-font";
+LogBox.ignoreAllLogs();
 
 const Stack = createNativeStackNavigator();
 
